@@ -13,8 +13,14 @@ body{background:#070708;display:flex;justify-content:center;align-items:center;m
 .card:before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#444,transparent)}
 .profile-img{width:112px;height:112px;border-radius:50%;margin:0 auto 16px;background:linear-gradient(135deg,#888,#222);padding:3px;display:flex;align-items:center;justify-content:center}
 .profile-img div{width:100%;height:100%;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;font-size:42px;color:#fff;font-weight:700}
-h1{color:#fff;font-size:26px;font-weight:700}
-.bio{color:#9a9a9e;font-size:13px;margin:8px 0 26px;line-height:1.6}
+h1{color:#fff;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+.v-badge{width:28px;height:28px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 12px rgba(255,215,0,0.6);border:1.5px solid #fff}
+.v-badge i{color:#000;font-size:13px;font-weight:900}
+.v-badge:after{content:'\f0e7';font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:-6px;top:50%;transform:translateY(-50%);font-size:10px;color:#FFD700;opacity:0.8}
+.v-badge:before{content:'\f0e7';font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;right:-6px;top:50%;transform:translateY(-50%) scaleX(-1);font-size:10px;color:#FFD700;opacity:0.8}
+.meta-badge{width:26px;height:26px;background:#1DA1F2;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(29,161,242,0.5)}
+.meta-badge i{color:#fff;font-size:14px}
+.bio{color:#9a9a9e;font-size:13px;margin:10px 0 26px;line-height:1.6}
 .bio span{color:#fff;font-weight:600}
 .links{display:flex;flex-direction:column;gap:14px}
 .link-btn{width:100%;display:flex;align-items:center;justify-content:space-between;background:#1e1e20;border:1px solid #2e2e32;border-radius:16px;padding:16px 18px;text-decoration:none;color:#fff;transition:0.25s}
@@ -29,16 +35,23 @@ h1{color:#fff;font-size:26px;font-weight:700}
 .link-text b{display:block;font-size:15.5px;line-height:1.1}
 .link-text small{color:#9a9a9e;font-size:12px}
 .link-arrow{color:#555}
-.footer{margin-top:28px;color:#5a5a5e;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.footer{margin-top:28px;color:#777;font-size:12px;letter-spacing:1px;font-weight:600}
 .verified{display:inline-flex;align-items:center;gap:5px;background:#1e1e20;border:1px solid #2e2e32;border-radius:20px;padding:5px 12px;font-size:11px;color:#9a9a9e;margin-bottom:16px}
 .verified i{color:#1DA1F2}
+.name-wrap{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
 </style>
 </head>
 <body>
 <div class="card">
 <div class="verified"><i class="fas fa-check-circle"></i> Official Verified</div>
 <div class="profile-img"><div>H</div></div>
+
+<div class="name-wrap">
 <h1>Himel Ahammed</h1>
+<div class="v-badge"><i class="fas fa-check"></i></div>
+<div class="meta-badge"><i class="fas fa-check"></i></div>
+</div>
+
 <p class="bio">Content Creator | <span>Himel Islamic400</span> | Music Lover<br>All my official links in one place</p>
 
 <div class="links">
@@ -59,7 +72,7 @@ h1{color:#fff;font-size:26px;font-weight:700}
 </a>
 </div>
 
-<div class="footer">Premium Hub • Himel Banar 2026</div>
+<div class="footer">Developer Himel • 2026</div>
 </div>
 </body>
 </html>
