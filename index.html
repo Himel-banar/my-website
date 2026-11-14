@@ -1,151 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himel Ahammed - Official</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Himel Ahammed</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{font-family:'Outfit',sans-serif;background:#050507;color:white}
-.glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08)}
-.glow{box-shadow:0 0 40px rgba(124,92,255,0.3)}
-.btn-link:hover{transform:translateY(-2px);background:rgba(255,255,255,0.1)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#0a0a0b;display:flex;justify-content:center;padding:15px;min-height:100vh}
+.card{width:100%;max-width:400px;background:#151515;border-radius:28px;padding:20px;border:1px solid #222}
+.badge{display:flex;justify-content:center;margin-bottom:15px}
+.badge span{background:#1e1e1e;border:1px solid #2a2a2a;padding:5px 12px;border-radius:20px;font-size:11px;color:#aaa}
+.profile{width:90px;height:90px;background:#000;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:700;border:2px solid #222}
+h1{text-align:center;font-size:28px;color:#c4b5fd}
+.sub{text-align:center;color:#aaa;font-size:13px;margin-top:2px}
+.links{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.link{display:flex;align-items:center;background:#1e1e1e;border:1px solid #2a2a2a;padding:12px;border-radius:18px;text-decoration:none;color:#fff;transition:0.2s}
+.link:hover{background:#252525;transform:translateY(-2px)}
+.icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0}
+.fb{background:#1877F2} .yt{background:#FF0000} .tk{background:#000} .wa{background:#25D366} .info{background:#8b5cf6}
+.link-text{margin-left:12px;flex:1}
+.link-text b{font-size:15px} .link-text p{font-size:11px;color:#999;margin-top:1px}
+.arrow{color:#555}
+.gallery{margin-top:25px} .gallery h2{font-size:16px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid img{width:100%;height:120px;object-fit:cover;border-radius:12px;background:#222}
+.admin{margin-top:25px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:18px;padding:14px}
+.admin input{width:100%;padding:10px;border-radius:10px;background:#000;border:1px solid #333;color:#fff;font-size:13px;margin-bottom:8px}
+.admin button{width:100%;padding:12px;border-radius:12px;background:#8b5cf6;color:#fff;font-weight:700;border:none;cursor:pointer}
+.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;padding:20px;z-index:99}
+.modal-box{background:#151515;border-radius:20px;padding:20px;max-width:400px;width:100%;border:1px solid #333}
 </style>
 </head>
-<body class="flex justify-center p-0 md:p-4 min-h-screen">
-<div class="w-full max-w-[420px] bg-[#0e0e10] md:rounded-[2.5rem] border border-[#1e1e1e] overflow-hidden">
+<body>
+<div class="card">
+<div class="badge"><span>✓ Official Verified</span></div>
+<div class="profile">H</div>
+<h1>Himel Ahammed</h1>
+<p class="sub">Music Lover<br>All my official links in one place</p>
 
-<!-- HEADER -->
-<div class="p-7 pb-2">
-<div class="flex justify-center"><div class="glass px-4 py-1 rounded-full text-[11px] tracking-widest text-gray-400">✓ Official Verified</div></div>
-<div class="flex justify-center mt-6"><div class="w-[88px] h-[88px] rounded-full bg-black border-2 border-[#222] flex items-center justify-center text-[48px] font-bold glow">H</div></div>
-<h1 class="text-[32px] font-bold text-center mt-4 bg-gradient-to-b from-white to-[#a78bfa] bg-clip-text text-transparent">Himel Ahammed</h1>
-<p class="text-center text-gray-400 text-[14px] mt-1">Music Lover<br><span class="text-[12px] opacity-70">All my official links in one place</span></p>
-</div>
-
-<!-- LINKS - আগের সব তথ্য থাকবে -->
-<div class="p-4 space-y-3">
-<a href="https://facebook.com" target="_blank" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-[#1877F2] flex items-center justify-center font-bold text-xl">f</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">Facebook</p><p class="text-xs text-gray-400">Himel Ahammed • Follow Me</p></div><span class="text-gray-500">›</span></a>
-<a href="https://youtube.com" target="_blank" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-[#FF0000] flex items-center justify-center">▶</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">YouTube</p><p class="text-xs text-gray-400">Himel Islamic400 • Subscribe</p></div><span class="text-gray-500">›</span></a>
-<a href="#" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-black flex items-center justify-center">♪</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">TikTok</p><p class="text-xs text-gray-400">@remix.music400 • Follow</p></div><span class="text-gray-500">›</span></a>
-<a href="https://wa.me/8801938250868" target="_blank" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-[#25D366] flex items-center justify-center">W</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">WhatsApp</p><p class="text-xs text-gray-400">01938-250868 • Message Me</p></div><span class="text-gray-500">›</span></a>
-<a href="#" class="btn-link glass flex items-center p-3 rounded-2xl transition-all border border-[#7c5cff]/30"><div class="w-12 h-12 rounded-xl bg-[#7c5cff] flex items-center justify-center">i</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">Know About Himel</p><p class="text-xs text-gray-400">Information about Himel Ahammed</p></div><span class="text-gray-500">›</span></a>
+<div class="links">
+<a href="https://www.facebook.com/himel.ahammed.2024" target="_blank" class="link"><div class="icon fb">f</div><div class="link-text"><b>Facebook</b><p>Himel Ahammed • Follow Me</p></div><span class="arrow">›</span></a>
+<a href="https://www.youtube.com/@HimelIslamic400" target="_blank" class="link"><div class="icon yt">▶</div><div class="link-text"><b>YouTube</b><p>Himel Islamic400 • Subscribe</p></div><span class="arrow">›</span></a>
+<a href="https://www.tiktok.com/@remix.music400" target="_blank" class="link"><div class="icon tk">♪</div><div class="link-text"><b>TikTok</b><p>@remix.music400 • Follow</p></div><span class="arrow">›</span></a>
+<a href="https://wa.me/8801938250868" target="_blank" class="link"><div class="icon wa">W</div><div class="link-text"><b>WhatsApp</b><p>01938-250868 • Message Me</p></div><span class="arrow">›</span></a>
+<a href="javascript:void(0)" onclick="openAbout()" class="link" style="border-color:#8b5cf6"><div class="icon info">i</div><div class="link-text"><b>Know About Himel</b><p>Information about Himel Ahammed</p></div><span class="arrow">›</span></a>
 </div>
 
-<!-- GALLERY - Backend থেকে আসবে -->
-<div class="p-4 mt-2">
-<div class="flex justify-between items-center mb-3"><h2 class="font-bold">📸 My Gallery</h2><span id="photoCount" class="text-xs text-gray-500">0 photos</span></div>
-<div id="gallery" class="grid grid-cols-2 gap-3">
-<p class="col-span-2 text-center text-xs text-gray-500 py-10">Loading photos from Backend...</p>
+<div class="gallery">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2>📸 My Gallery</h2><span id="count" style="font-size:11px;color:#777">0 photos</span></div>
+<div id="gallery" class="grid"><p style="grid-column:1/-1;text-align:center;color:#666;font-size:12px;padding:20px">No photos yet. Login as admin to add.</p></div>
+</div>
+
+<div class="admin">
+<div id="loginBtn"><button onclick="askPass()" style="background:transparent;color:#666;font-size:11px">🔐 Admin Login • Developer Access</button></div>
+<div id="panel" style="display:none">
+<b style="font-size:14px">🔐 Admin Panel (Backend)</b>
+<input id="pTitle" placeholder="Photo Title">
+<input id="pFile" type="file" accept="image/*">
+<button id="upBtn" onclick="upload()">Upload to Backend</button>
+<p id="status" style="font-size:11px;color:#aaa;text-align:center;margin-top:6px"></p>
+<div id="adminList" style="margin-top:10px"></div>
+<button onclick="logout()" style="background:transparent;color:#ff5555;font-size:11px;margin-top:8px">Logout</button>
+</div>
+<p style="text-align:center;font-size:9px;color:#444;margin-top:15px">Developer Himel • 2026 • Frontend + Firebase Backend</p>
 </div>
 </div>
 
-<!-- ADMIN PANEL - একই পেজের ভিতরে, Backend Configured -->
-<div class="p-4 mt-4 border-t border-[#1a1a1a]">
-<div id="adminLoginBtn" class="text-center"><button onclick="askPassword()" class="text-[10px] text-gray-600 hover:text-gray-300">Admin Login • Developer Access</button></div>
-<div id="adminPanel" class="hidden glass rounded-2xl p-4 mt-2">
-<h3 class="font-bold text-sm mb-3">🔐 Admin Panel (Backend)</h3>
-<input id="pName" type="text" placeholder="Photo Title (Ex: My New Photo)" class="w-full p-3 rounded-xl bg-black border border-[#222] text-sm mb-2 outline-none">
-<input id="pFile" type="file" accept="image/*" class="w-full text-xs text-gray-400 mb-3">
-<button onclick="uploadPhoto()" id="uploadBtn" class="w-full bg-[#7c5cff] py-3 rounded-xl font-bold text-sm">Upload to Backend</button>
-<p id="uploadStatus" class="text-[11px] text-center mt-2 text-gray-400"></p>
-<div id="adminList" class="mt-4 space-y-2 max-h-40 overflow-y-auto"></div>
-<button onclick="logoutAdmin()" class="w-full mt-3 text-xs text-red-400">Logout</button>
-</div>
-<p class="text-center text-[9px] text-gray-600 mt-6">Developer Himel • 2026 • Frontend + Firebase Backend</p>
-</div>
-
-</div>
+<div id="aboutModal" class="modal" onclick="closeAbout()"><div class="modal-box" onclick="event.stopPropagation()">
+<h2 style="color:#c4b5fd">About Himel Ahammed</h2><p style="font-size:13px;color:#aaa;margin-top:10px;line-height:1.6">
+Hi, I'm Himel Ahammed, a Music Lover from Bangladesh.<br><br>
+<b>Official Links:</b><br>
+• Facebook: Himel Ahammed<br>
+• YouTube: Himel Islamic400<br>
+• TikTok: @remix.music400<br>
+• WhatsApp: 01938-250868<br><br>
+This website is built with Frontend (HTML/CSS/JS) + Backend (Firebase Firestore) with secure Admin Panel.
+</p><button onclick="closeAbout()" style="margin-top:15px;background:#8b5cf6;width:100%;padding:10px;border-radius:10px;border:none;color:#fff">Close</button>
+</div></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4yg4DKwsneFI74",
-  authDomain: "my-website-5f35e.firebaseapp.com",
-  projectId: "my-website-5f35e",
-  storageBucket: "my-website-5f35e.firebasestorage.app",
-  messagingSenderId: "396841768868",
-  appId: "1:396841768868:web:a9b3bd7776796deb4a1331"
-};
+const firebaseConfig = { apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4yg4DKwsneFI74", authDomain: "my-website-5f35e.firebaseapp.com", projectId: "my-website-5f35e", storageBucket: "my-website-5f35e.firebasestorage.app", messagingSenderId: "396841768868", appId: "1:396841768868:web:a9b3bd7776796deb4a1331" };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const colRef = collection(db, "himel_photos");
 let isAdmin = false;
-const ADMIN_PASS = "J@hidul)";
+const PASS = "J@hidul)";
 
-window.askPassword = () => {
-  const pass = prompt("Enter Admin Password:");
-  if(pass === ADMIN_PASS){
-    isAdmin = true;
-    document.getElementById('adminPanel').classList.remove('hidden');
-    document.getElementById('adminLoginBtn').classList.add('hidden');
-    loadAdminList();
-    alert("Welcome Himel! Backend Connected.");
-  } else if(pass){ alert("Wrong Password!"); }
-}
-window.logoutAdmin = () => {
-  isAdmin = false;
-  document.getElementById('adminPanel').classList.add('hidden');
-  document.getElementById('adminLoginBtn').classList.remove('hidden');
-}
+window.askPass = () => { const p = prompt("Enter Admin Password:"); if(p===PASS){ isAdmin=true; document.getElementById('panel').style.display='block'; document.getElementById('loginBtn').style.display='none'; loadAdmin(); } else if(p){ alert("Wrong Password!"); } }
+window.logout = () => { isAdmin=false; document.getElementById('panel').style.display='none'; document.getElementById('loginBtn').style.display='block'; }
+window.openAbout = () => { document.getElementById('aboutModal').style.display='flex'; }
+window.closeAbout = () => { document.getElementById('aboutModal').style.display='none'; }
 
-async function loadGallery(){
-  const q = query(colRef, orderBy("createdAt","desc"));
-  const snap = await getDocs(q);
-  const gallery = document.getElementById('gallery');
-  const count = document.getElementById('photoCount');
-  gallery.innerHTML = "";
-  count.innerText = snap.size + " photos";
-  if(snap.empty){ gallery.innerHTML = '<p class="col-span-2 text-center text-xs text-gray-500 py-10">No photos yet. Login as admin to add.</p>'; return; }
-  snap.forEach(d=>{
-    const data = d.data();
-    const div = document.createElement('div');
-    div.className = "rounded-2xl overflow-hidden glass";
-    div.innerHTML = `<img src="${data.image}" class="w-full h-32 object-cover"><div class="p-2"><p class="text-[11px] truncate">${data.name||'Photo'}</p></div>`;
-    gallery.appendChild(div);
+function compressImage(file){
+  return new Promise((resolve)=>{
+    const reader = new FileReader();
+    reader.onload = (e)=>{
+      const img = new Image();
+      img.onload = ()=>{
+        const canvas = document.createElement('canvas');
+        let w = img.width, h = img.height;
+        const max = 800;
+        if(w>max || h>max){ if(w>h){ h*=max/w; w=max; } else { w*=max/h; h=max; } }
+        canvas.width=w; canvas.height=h;
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        resolve(canvas.toDataURL('image/jpeg',0.6));
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
   });
 }
 
-async function loadAdminList(){
+async function loadGallery(){
+  const snap = await getDocs(query(colRef, orderBy("createdAt","desc")));
+  const gal = document.getElementById('gallery');
+  const cnt = document.getElementById('count');
+  gal.innerHTML = ""; cnt.innerText = snap.size+" photos";
+  if(snap.empty){ gal.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#666;font-size:12px;padding:20px">No photos yet. Login as admin to add.</p>'; return; }
+  snap.forEach(d=>{
+    const data = d.data();
+    gal.innerHTML += `<div><img src="${data.image}"><p style="font-size:10px;padding:4px">${data.name||''}</p></div>`;
+  });
+}
+async function loadAdmin(){
   const snap = await getDocs(query(colRef, orderBy("createdAt","desc")));
   const list = document.getElementById('adminList');
   list.innerHTML = "";
   snap.forEach(d=>{
     const data = d.data();
-    list.innerHTML += `<div class="flex items-center gap-2 bg-black p-2 rounded-lg"><img src="${data.image}" class="w-10 h-10 rounded object-cover"><p class="flex-1 text-xs truncate">${data.name}</p><button onclick="deletePhoto('${d.id}')" class="text-red-400 text-xs">Delete</button></div>`;
+    list.innerHTML += `<div style="display:flex;align-items:center;gap:6px;background:#000;padding:6px;border-radius:8px;margin-top:6px"><img src="${data.image}" style="width:36px;height:36px;border-radius:6px;object-fit:cover"><span style="flex:1;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${data.name}</span><button onclick="del('${d.id}')" style="background:none;color:#ff5555;font-size:11px;width:auto;padding:0 6px">Delete</button></div>`;
   });
 }
-
-window.uploadPhoto = async () => {
-  const name = document.getElementById('pName').value;
-  const fileInput = document.getElementById('pFile');
-  const status = document.getElementById('uploadStatus');
-  const btn = document.getElementById('uploadBtn');
-  if(!name || !fileInput.files[0]){ alert("Title and Photo both needed!"); return; }
-  btn.innerText = "Uploading to Backend..."; btn.disabled = true;
-  const reader = new FileReader();
-  reader.onload = async (e) => {
-    try{
-      await addDoc(colRef, { name: name, image: e.target.result, createdAt: serverTimestamp() });
-      status.innerText = "✓ Saved to Backend (Firestore)!";
-      document.getElementById('pName').value = ""; fileInput.value = "";
-      loadGallery(); loadAdminList();
-      setTimeout(()=>{ status.innerText=""; },2000);
-    }catch(err){ status.innerText = "Error: "+err.message; }
-    btn.innerText = "Upload to Backend"; btn.disabled = false;
-  };
-  reader.readAsDataURL(fileInput.files[0]);
+window.upload = async () => {
+  const title = document.getElementById('pTitle').value;
+  const file = document.getElementById('pFile').files[0];
+  const status = document.getElementById('status');
+  const btn = document.getElementById('upBtn');
+  if(!title || !file){ alert("Title and Photo needed"); return; }
+  btn.innerText="Compressing & Uploading..."; btn.disabled=true;
+  try{
+    const compressed = await compressImage(file);
+    status.innerText="Saving to Firebase Backend...";
+    await addDoc(colRef, { name:title, image:compressed, createdAt:serverTimestamp() });
+    status.innerText="✓ Uploaded to Backend!";
+    document.getElementById('pTitle').value=""; document.getElementById('pFile').value="";
+    loadGallery(); loadAdmin();
+    setTimeout(()=>status.innerText="",2000);
+  }catch(e){ status.innerText="Error: "+e.message; }
+  btn.innerText="Upload to Backend"; btn.disabled=false;
 }
-
-window.deletePhoto = async (id) => {
-  if(!confirm("Delete this photo from backend?")) return;
-  await deleteDoc(doc(db, "himel_photos", id));
-  loadGallery(); loadAdminList();
-}
-
+window.del = async (id) => { if(!confirm("Delete?")) return; await deleteDoc(doc(db,"himel_photos",id)); loadGallery(); loadAdmin(); }
 loadGallery();
 </script>
 </body>
