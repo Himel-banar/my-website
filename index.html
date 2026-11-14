@@ -1,223 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Himel Ahammed - Official</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himel Ahammed</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#0a0a0b;display:flex;justify-content:center;padding:15px;min-height:100vh}
-.card{width:100%;max-width:400px;background:#151515;border-radius:28px;padding:20px;border:1px solid #222}
-.badge{display:flex;justify-content:center;margin-bottom:15px}
-.badge span{background:#1e1e1e;border:1px solid #2a2a2a;padding:5px 12px;border-radius:20px;font-size:11px;color:#aaa}
-.profile{width:90px;height:90px;background:#000;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:700;border:2px solid #222;box-shadow:0 0 30px rgba(139,92,246,0.3)}
-/* নাম জলজলে এনিমেশন */
-h1{text-align:center;font-size:30px;font-weight:700;background:linear-gradient(90deg,#fff,#c4b5fd,#8b5cf6,#fff);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine 3s linear infinite}
-@keyframes shine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-.sub{text-align:center;color:#aaa;font-size:13px;margin-top:2px}
-.links{margin-top:20px;display:flex;flex-direction:column;gap:12px}
-.link{display:flex;align-items:center;background:#1e1e1e;border:1px solid #2a2a2a;padding:12px;border-radius:18px;text-decoration:none;color:#fff;transition:0.2s}
-.link:hover{background:#252525;transform:translateY(-2px)}
-.icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#fff;padding:7px;flex-shrink:0}
-.icon img{width:100%;height:100%;object-fit:contain}
-.link-text{margin-left:12px;flex:1}
-.link-text b{font-size:15px} .link-text p{font-size:11px;color:#999;margin-top:1px}
-.arrow{color:#555}
-.gallery{margin-top:25px} .gallery h2{font-size:16px;margin-bottom:10px;color:#fff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid img{width:100%;height:120px;object-fit:cover;border-radius:12px;background:#222}
-.admin{margin-top:25px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:18px;padding:14px}
-.admin input{width:100%;padding:10px;border-radius:10px;background:#000;border:1px solid #333;color:#fff;font-size:13px;margin-bottom:8px}
-.admin button{width:100%;padding:12px;border-radius:12px;background:#8b5cf6;color:#fff;font-weight:700;border:none;cursor:pointer}
-.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:99}
-.modal-box{background:#151515;border-radius:20px;padding:22px;max-width:400px;width:100%;border:1px solid #333;max-height:85vh;overflow-y:auto}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#121212;color:#fff;font-family:sans-serif;display:flex;justify-content:center;padding:20px}
+.container{width:100%;max-width:400px}
+.profile{text-align:center;margin-bottom:20px}
+.profile-img{width:120px;height:120px;border-radius:50%;background:#000;margin:0 auto 10px;box-shadow:0 0 15px rgba(138,43,226,0.5)}
+.profile h1{font-size:32px;line-height:1.2}
+.profile h1 span{color:#c3b1ff}
+.profile p{color:#aaa;margin-top:5px}
+.card{background:#1e1e1e;border-radius:15px;padding:12px;display:flex;align-items:center;margin-bottom:12px;text-decoration:none;color:#fff;border:1px solid #2a2a2a}
+.card img{width:48px;height:48px;border-radius:12px;background:#fff;object-fit:contain;padding:2px}
+.card-text{margin-left:12px;flex:1}
+.card-text b{font-size:16px}
+.card-text p{font-size:12px;color:#888}
+.card.special{border-color:#8a2be2}
+.gallery-title{margin:20px 0 10px;font-weight:bold}
+.gallery img{width:100%;border-radius:15px}
+.footer{text-align:center;margin-top:30px;padding:15px;color:#ff0000;font-weight:bold;font-size:14px}
 </style>
 </head>
 <body>
-<div class="card">
-<div class="badge"><span>✓ Official Verified</span></div>
-<div class="profile">H</div>
-<h1>Himel Ahammed</h1>
-<p class="sub">Music Lover<br>All my official links in one place</p>
+<div class="container">
+  <div class="profile">
+    <div class="profile-img"></div>
+    <h1>Himel<br><span>Ahammed</span></h1>
+    <p>Music Lover<br>All my official links in one place</p>
+  </div>
 
-<div class="links">
-<a href="https://www.facebook.com/himel.ahammed.2024" target="_blank" class="link"><div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"></div><div class="link-text"><b>Facebook</b><p>Himel Ahammed • Follow Me</p></div><span class="arrow">›</span></a>
-<a href="https://www.youtube.com/@HimelIslamic400" target="_blank" class="link"><div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"></div><div class="link-text"><b>YouTube</b><p>Himel Islamic400 • Subscribe</p></div><span class="arrow">›</span></a>
-<a href="https://www.tiktok.com/@remix.music400" target="_blank" class="link"><div class="icon" style="background:#000"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Black_logo_of_TikTok.svg" style="filter:invert(1)"></div><div class="link-text"><b>TikTok</b><p>@remix.music400 • Follow</p></div><span class="arrow">›</span></a>
-<a href="https://wa.me/8801938250868" target="_blank" class="link"><div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"></div><div class="link-text"><b>WhatsApp</b><p>01938-250868 • Message Me</p></div><span class="arrow">›</span></a>
-<a href="javascript:void(0)" onclick="openAbout()" class="link" style="border-color:#8b5cf6"><div class="icon" style="background:#8b5cf6;color:#fff;font-size:22px;font-weight:700;justify-content:center">i</div><div class="link-text"><b>Know About Himel</b><p>Information about Himel Ahammed</p></div><span class="arrow">›</span></a>
-</div>
+  <a class="card" href="#">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
+    <div class="card-text"><b>Facebook</b><p>Himel Ahammed • Follow Me</p></div>
+  </a>
 
-<div class="gallery">
-<div style="display:flex;justify-content:space-between;align-items:center"><h2>📸 My Gallery</h2><span id="count" style="font-size:11px;color:#777">0 photos</span></div>
-<div id="gallery" class="grid"><p style="grid-column:1/-1;text-align:center;color:#666;font-size:12px;padding:20px">Loading from Backend...</p></div>
-</div>
+  <a class="card" href="#">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Youtube_Music_icon.svg">
+    <div class="card-text"><b>YouTube</b><p>Himel Islamic400 • Subscribe</p></div>
+  </a>
 
-<div class="admin">
-<div id="loginBtn"><button onclick="askPass()" style="background:transparent;color:#666;font-size:11px">🔐 Admin Login • Developer Access</button></div>
-<div id="panel" style="display:none">
-<b style="font-size:14px">🔐 Admin Panel (Backend)</b>
-<input id="pTitle" placeholder="Photo Title">
-<input id="pFile" type="file" accept="image/*">
-<button id="upBtn" onclick="upload()">Upload to Backend</button>
-<p id="status" style="font-size:11px;color:#aaa;text-align:center;margin-top:6px"></p>
-<div id="adminList" style="margin-top:10px"></div>
-<button onclick="logout()" style="background:transparent;color:#ff5555;font-size:11px;margin-top:8px">Logout</button>
-</div>
-<p style="text-align:center;font-size:9px;color:#444;margin-top:15px">Developer Himel • 2026 • Frontend + Firebase Backend</p>
-</div>
-</div>
+  <a class="card" href="#">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a9/40/Logo_of_TikTok.png">
+    <div class="card-text"><b>TikTok</b><p>@remix.music400 • Follow</p></div>
+  </a>
 
-<div id="aboutModal" class="modal" onclick="closeAbout()"><div class="modal-box" onclick="event.stopPropagation()">
-<h2 style="color:#c4b5fd">About Himel Ahammed</h2>
-<div style="font-size:13px;color:#ccc;margin-top:12px;line-height:1.7">
-<p>👋 Assalamu Alaikum! I'm <b style="color:#fff">Himel Ahammed</b></p><br>
-<p>🎵 <b>Music Lover</b> from Bangladesh. I love to create and share Islamic and remix content.</p><br>
-<p><b style="color:#fff">My Official Links:</b><br>
-📘 Facebook: Himel Ahammed<br>
-🔴 YouTube: Himel Islamic400<br>
-🎵 TikTok: @remix.music400<br>
-💬 WhatsApp: 01938-250868</p><br>
-<p><b style="color:#fff">About This Website:</b><br>
-This is my official personal website. Built with<br>
-- Frontend: HTML, CSS, Poppins Font, Real Logos<br>
-- Backend: Firebase Firestore Database<br>
-- Features: Secure Admin Panel, Real-time Gallery, Shining Name Animation</p><br>
-<p style="font-size:11px;color:#777">Developer: Himel • 2026</p>
-</div>
-<button onclick="closeAbout()" style="margin-top:15px;background:#8b5cf6;width:100%;padding:10px;border-radius:10px;border:none;color:#fff;font-weight:600">Close</button>
-</div></div>
+  <a class="card" href="#">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+    <div class="card-text"><b>WhatsApp</b><p>01938-250868 • Message Me</p></div>
+  </a>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-const firebaseConfig = { apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4yg4DKwsneFI74", authDomain: "my-website-5f35e.firebaseapp.com", projectId: "my-website-5f35e", storageBucket: "my-website-5f35e.firebasestorage.app", messagingSenderId: "396841768868", appId: "1:396841768868:web:a9b3bd7776796deb4a1331" };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const colRef = collection(db, "himel_photos");
-const PASS = "J@hidul)";
-window.askPass = () => { const p = prompt("Enter Admin Password:"); if(p===PASS){ document.getElementById('panel').style.display='block'; document.getElementById('loginBtn').style.display='none'; loadAdmin(); } else if(p){ alert("Wrong Password!"); } }
-window.logout = () => { document.getElementById('panel').style.display='none'; document.getElementById('loginBtn').style.display='block'; }
-window.openAbout = () => { document.getElementById('aboutModal').style.display='flex'; }
-window.closeAbout = () => { document.getElementById('aboutModal').style.display='none'; }
-function compressImage(file){ return new Promise((resolve)=>{ const reader = new FileReader(); reader.onload = (e)=>{ const img = new Image(); img.onload = ()=>{ const canvas = document.createElement('canvas'); let w=img.width,h=img.height; const max=800; if(w>max||h>max){ if(w>h){ h*=max/w; w=max; } else { w*=max/h; h=max; } } canvas.width=w; canvas.height=h; canvas.getContext('2d').drawImage(img,0,0,w,h); resolve(canvas.toDataURL('image/jpeg',0.6)); }; img.src=e.target.result; }; reader.readAsDataURL(file); }); }
-async function loadGallery(){ const snap = await getDocs(query(colRef, orderBy("createdAt","desc"))); const gal=document.getElementById('gallery'); const cnt=document.getElementById('count'); gal.innerHTML=""; cnt.innerText=snap.size+" photos"; if(snap.empty){ gal.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#666;font-size:12px;padding:20px">No photos yet.</p>'; return; } snap.forEach(d=>{ const data=d.data(); gal.innerHTML+=`<div style="background:#1e1e1e;border-radius:12px;overflow:hidden;border:1px solid #2a2a2a"><img src="${data.image}"><p style="font-size:10px;padding:6px">${data.name||''}</p></div>`; }); }
-async function loadAdmin(){ const snap=await getDocs(query(colRef, orderBy("createdAt","desc"))); const list=document.getElementById('adminList'); list.innerHTML=""; snap.forEach(d=>{ const data=d.data(); list.innerHTML+=`<div style="display:flex;align-items:center;gap:6px;background:#000;padding:6px;border-radius:8px;margin-top:6px"><img src="${data.image}" style="width:36px;height:36px;border-radius:6px;object-fit:cover"><span style="flex:1;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${data.name}</span><button onclick="del('${d.id}')" style="background:none;color:#ff5555;font-size:11px;width:auto;padding:0 6px">Delete</button></div>`; }); }
-window.upload = async ()=>{ const title=document.getElementById('pTitle').value; const file=document.getElementById('pFile').files[0]; const status=document.getElementById('status'); const btn=document.getElementById('upBtn'); if(!title||!file){ alert("Title and Photo needed"); return; } btn.innerText="Compressing & Uploading..."; btn.disabled=true; try{ const compressed=await compressImage(file); status.innerText="Saving to Backend..."; await addDoc(colRef, { name:title, image:compressed, createdAt:serverTimestamp() }); status.innerText="✓ Saved to Backend!"; document.getElementById('pTitle').value=""; document.getElementById('pFile').value=""; loadGallery(); loadAdmin(); setTimeout(()=>status.innerText="",2000); }catch(e){ status.innerText="Error: "+e.message; } btn.innerText="Upload to Backend"; btn.disabled=false; }
-window.del = async (id)=>{ if(!confirm("Delete?")) return; await deleteDoc(doc(db,"himel_photos",id)); loadGallery(); loadAdmin(); }
-loadGallery();
-</script>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Himel Ahammed - Official</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#0a0a0b;display:flex;justify-content:center;padding:15px;min-height:100vh}
-.card{width:100%;max-width:400px;background:#151515;border-radius:28px;padding:20px;border:1px solid #222}
-.badge{display:flex;justify-content:center;margin-bottom:15px}
-.badge span{background:#1e1e1e;border:1px solid #2a2a2a;padding:5px 12px;border-radius:20px;font-size:11px;color:#aaa}
-.profile{width:90px;height:90px;background:#000;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:700;border:2px solid #222;box-shadow:0 0 30px rgba(139,92,246,0.3)}
-/* নাম জলজলে এনিমেশন */
-h1{text-align:center;font-size:30px;font-weight:700;background:linear-gradient(90deg,#fff,#c4b5fd,#8b5cf6,#fff);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine 3s linear infinite}
-@keyframes shine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-.sub{text-align:center;color:#aaa;font-size:13px;margin-top:2px}
-.links{margin-top:20px;display:flex;flex-direction:column;gap:12px}
-.link{display:flex;align-items:center;background:#1e1e1e;border:1px solid #2a2a2a;padding:12px;border-radius:18px;text-decoration:none;color:#fff;transition:0.2s}
-.link:hover{background:#252525;transform:translateY(-2px)}
-.icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#fff;padding:7px;flex-shrink:0}
-.icon img{width:100%;height:100%;object-fit:contain}
-.link-text{margin-left:12px;flex:1}
-.link-text b{font-size:15px} .link-text p{font-size:11px;color:#999;margin-top:1px}
-.arrow{color:#555}
-.gallery{margin-top:25px} .gallery h2{font-size:16px;margin-bottom:10px;color:#fff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.grid img{width:100%;height:120px;object-fit:cover;border-radius:12px;background:#222}
-.admin{margin-top:25px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:18px;padding:14px}
-.admin input{width:100%;padding:10px;border-radius:10px;background:#000;border:1px solid #333;color:#fff;font-size:13px;margin-bottom:8px}
-.admin button{width:100%;padding:12px;border-radius:12px;background:#8b5cf6;color:#fff;font-weight:700;border:none;cursor:pointer}
-.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:99}
-.modal-box{background:#151515;border-radius:20px;padding:22px;max-width:400px;width:100%;border:1px solid #333;max-height:85vh;overflow-y:auto}
-</style>
-</head>
-<body>
-<div class="card">
-<div class="badge"><span>✓ Official Verified</span></div>
-<div class="profile">H</div>
-<h1>Himel Ahammed</h1>
-<p class="sub">Music Lover<br>All my official links in one place</p>
+  <a class="card special" href="#">
+    <div style="width:48px;height:48px;background:#8a5cff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:22px">i</div>
+    <div class="card-text"><b>Know About Himel</b><p>Information about Himel Ahammed</p></div>
+  </a>
 
-<div class="links">
-<a href="https://www.facebook.com/himel.ahammed.2024" target="_blank" class="link"><div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"></div><div class="link-text"><b>Facebook</b><p>Himel Ahammed • Follow Me</p></div><span class="arrow">›</span></a>
-<a href="https://www.youtube.com/@HimelIslamic400" target="_blank" class="link"><div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"></div><div class="link-text"><b>YouTube</b><p>Himel Islamic400 • Subscribe</p></div><span class="arrow">›</span></a>
-<a href="https://www.tiktok.com/@remix.music400" target="_blank" class="link"><div class="icon" style="background:#000"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Black_logo_of_TikTok.svg" style="filter:invert(1)"></div><div class="link-text"><b>TikTok</b><p>@remix.music400 • Follow</p></div><span class="arrow">›</span></a>
-<a href="https://wa.me/8801938250868" target="_blank" class="link"><div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"></div><div class="link-text"><b>WhatsApp</b><p>01938-250868 • Message Me</p></div><span class="arrow">›</span></a>
-<a href="javascript:void(0)" onclick="openAbout()" class="link" style="border-color:#8b5cf6"><div class="icon" style="background:#8b5cf6;color:#fff;font-size:22px;font-weight:700;justify-content:center">i</div><div class="link-text"><b>Know About Himel</b><p>Information about Himel Ahammed</p></div><span class="arrow">›</span></a>
-</div>
+  <div class="gallery-title">📸 My Gallery</div>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/400x500">
+  </div>
 
-<div class="gallery">
-<div style="display:flex;justify-content:space-between;align-items:center"><h2>📸 My Gallery</h2><span id="count" style="font-size:11px;color:#777">0 photos</span></div>
-<div id="gallery" class="grid"><p style="grid-column:1/-1;text-align:center;color:#666;font-size:12px;padding:20px">Loading from Backend...</p></div>
+  <div class="footer">Developer : Himel</div>
 </div>
-
-<div class="admin">
-<div id="loginBtn"><button onclick="askPass()" style="background:transparent;color:#666;font-size:11px">🔐 Admin Login • Developer Access</button></div>
-<div id="panel" style="display:none">
-<b style="font-size:14px">🔐 Admin Panel (Backend)</b>
-<input id="pTitle" placeholder="Photo Title">
-<input id="pFile" type="file" accept="image/*">
-<button id="upBtn" onclick="upload()">Upload to Backend</button>
-<p id="status" style="font-size:11px;color:#aaa;text-align:center;margin-top:6px"></p>
-<div id="adminList" style="margin-top:10px"></div>
-<button onclick="logout()" style="background:transparent;color:#ff5555;font-size:11px;margin-top:8px">Logout</button>
-</div>
-<p style="text-align:center;font-size:9px;color:#444;margin-top:15px">Developer Himel • 2026 • Frontend + Firebase Backend</p>
-</div>
-</div>
-
-<div id="aboutModal" class="modal" onclick="closeAbout()"><div class="modal-box" onclick="event.stopPropagation()">
-<h2 style="color:#c4b5fd">About Himel Ahammed</h2>
-<div style="font-size:13px;color:#ccc;margin-top:12px;line-height:1.7">
-<p>👋 Assalamu Alaikum! I'm <b style="color:#fff">Himel Ahammed</b></p><br>
-<p>🎵 <b>Music Lover</b> from Bangladesh. I love to create and share Islamic and remix content.</p><br>
-<p><b style="color:#fff">My Official Links:</b><br>
-📘 Facebook: Himel Ahammed<br>
-🔴 YouTube: Himel Islamic400<br>
-🎵 TikTok: @remix.music400<br>
-💬 WhatsApp: 01938-250868</p><br>
-<p><b style="color:#fff">About This Website:</b><br>
-This is my official personal website. Built with<br>
-- Frontend: HTML, CSS, Poppins Font, Real Logos<br>
-- Backend: Firebase Firestore Database<br>
-- Features: Secure Admin Panel, Real-time Gallery, Shining Name Animation</p><br>
-<p style="font-size:11px;color:#777">Developer: Himel • 2026</p>
-</div>
-<button onclick="closeAbout()" style="margin-top:15px;background:#8b5cf6;width:100%;padding:10px;border-radius:10px;border:none;color:#fff;font-weight:600">Close</button>
-</div></div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-const firebaseConfig = { apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4yg4DKwsneFI74", authDomain: "my-website-5f35e.firebaseapp.com", projectId: "my-website-5f35e", storageBucket: "my-website-5f35e.firebasestorage.app", messagingSenderId: "396841768868", appId: "1:396841768868:web:a9b3bd7776796deb4a1331" };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const colRef = collection(db, "himel_photos");
-const PASS = "J@hidul)";
-window.askPass = () => { const p = prompt("Enter Admin Password:"); if(p===PASS){ document.getElementById('panel').style.display='block'; document.getElementById('loginBtn').style.display='none'; loadAdmin(); } else if(p){ alert("Wrong Password!"); } }
-window.logout = () => { document.getElementById('panel').style.display='none'; document.getElementById('loginBtn').style.display='block'; }
-window.openAbout = () => { document.getElementById('aboutModal').style.display='flex'; }
-window.closeAbout = () => { document.getElementById('aboutModal').style.display='none'; }
-function compressImage(file){ return new Promise((resolve)=>{ const reader = new FileReader(); reader.onload = (e)=>{ const img = new Image(); img.onload = ()=>{ const canvas = document.createElement('canvas'); let w=img.width,h=img.height; const max=800; if(w>max||h>max){ if(w>h){ h*=max/w; w=max; } else { w*=max/h; h=max; } } canvas.width=w; canvas.height=h; canvas.getContext('2d').drawImage(img,0,0,w,h); resolve(canvas.toDataURL('image/jpeg',0.6)); }; img.src=e.target.result; }; reader.readAsDataURL(file); }); }
-async function loadGallery(){ const snap = await getDocs(query(colRef, orderBy("createdAt","desc"))); const gal=document.getElementById('gallery'); const cnt=document.getElementById('count'); gal.innerHTML=""; cnt.innerText=snap.size+" photos"; if(snap.empty){ gal.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#666;font-size:12px;padding:20px">No photos yet.</p>'; return; } snap.forEach(d=>{ const data=d.data(); gal.innerHTML+=`<div style="background:#1e1e1e;border-radius:12px;overflow:hidden;border:1px solid #2a2a2a"><img src="${data.image}"><p style="font-size:10px;padding:6px">${data.name||''}</p></div>`; }); }
-async function loadAdmin(){ const snap=await getDocs(query(colRef, orderBy("createdAt","desc"))); const list=document.getElementById('adminList'); list.innerHTML=""; snap.forEach(d=>{ const data=d.data(); list.innerHTML+=`<div style="display:flex;align-items:center;gap:6px;background:#000;padding:6px;border-radius:8px;margin-top:6px"><img src="${data.image}" style="width:36px;height:36px;border-radius:6px;object-fit:cover"><span style="flex:1;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${data.name}</span><button onclick="del('${d.id}')" style="background:none;color:#ff5555;font-size:11px;width:auto;padding:0 6px">Delete</button></div>`; }); }
-window.upload = async ()=>{ const title=document.getElementById('pTitle').value; const file=document.getElementById('pFile').files[0]; const status=document.getElementById('status'); const btn=document.getElementById('upBtn'); if(!title||!file){ alert("Title and Photo needed"); return; } btn.innerText="Compressing & Uploading..."; btn.disabled=true; try{ const compressed=await compressImage(file); status.innerText="Saving to Backend..."; await addDoc(colRef, { name:title, image:compressed, createdAt:serverTimestamp() }); status.innerText="✓ Saved to Backend!"; document.getElementById('pTitle').value=""; document.getElementById('pFile').value=""; loadGallery(); loadAdmin(); setTimeout(()=>status.innerText="",2000); }catch(e){ status.innerText="Error: "+e.message; } btn.innerText="Upload to Backend"; btn.disabled=false; }
-window.del = async (id)=>{ if(!confirm("Delete?")) return; await deleteDoc(doc(db,"himel_photos",id)); loadGallery(); loadAdmin(); }
-loadGallery();
-</script>
 </body>
 </html>
