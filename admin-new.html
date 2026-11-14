@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin - Billing Free</title><script src="https://cdn.tailwindcss.com"></script></head>
-<body class="bg-gray-100 p-4">
-<div class="max-w-4xl mx-auto">
-  <h1 class="text-2xl font-bold mb-4">✅ Billing Free Admin</h1>
+<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Secure Admin</title><script src="https://cdn.tailwindcss.com"></script></head><body class="bg-gray-100">
+<div id="lockScreen" class="fixed inset-0 bg-black flex items-center justify-center z-50 p-4">
+  <div class="bg-white p-8 rounded-2xl w-full max-w-sm text-center shadow-2xl">
+    <h2 class="text-xl font-bold mb-4">🔒 Admin Login</h2>
+    <input id="passInput" type="password" placeholder="Password দাও" class="border-2 p-3 rounded-xl w-full mb-4">
+    <button id="loginBtn" class="bg-black text-white w-full py-3 rounded-xl font-bold">Login</button>
+    <p id="loginErr" class="text-red-500 text-sm mt-2 hidden">ভুল পাসওয়ার্ড!</p>
+  </div>
+</div>
+<div class="max-w-4xl mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">✅ Secure Admin - Himel</h1>
   <div class="bg-white p-6 rounded shadow mb-6">
     <div class="grid md:grid-cols-2 gap-3">
       <input id="name" placeholder="নাম" class="border p-3 rounded w-full">
@@ -21,47 +26,14 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4ygDKwsneFI74",
-  authDomain: "my-website-5f35e.firebaseapp.com",
-  projectId: "my-website-5f35e",
-  storageBucket: "my-website-5f35e.firebasestorage.app",
-  messagingSenderId: "396841768868",
-  appId: "1:396841768868:web:a9b3bd7776796deb4a1331",
-  measurementId: "G-BJD027R0MM"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-let base64Image = "";
-const imageFileInput = document.getElementById('imageFile');
-imageFileInput.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-  if(file.size > 800*1024){ alert("ছবি 800KB এর বেশি, ছোট ছবি দাও ভাই"); return; }
-  const reader = new FileReader();
-  reader.onload = (ev) => { base64Image = ev.target.result; document.getElementById('previewImg').src = base64Image; document.getElementById('preview').classList.remove('hidden'); };
-  reader.readAsDataURL(file);
-});
-document.getElementById('saveBtn').addEventListener('click', async () => {
-  const name=document.getElementById('name').value, price=document.getElementById('price').value, category=document.getElementById('category').value, desc=document.getElementById('desc').value;
-  if(!name||!price||!base64Image){ alert("নাম, দাম, ছবি লাগবে"); return; }
-  try{
-    await addDoc(collection(db, "products"), { name, price:Number(price), category, description:desc, image:base64Image, createdAt:serverTimestamp() });
-    document.getElementById('status').innerText="✅ সেভ হয়েছে!"; location.reload();
-  }catch(err){ alert(err.message); }
-});
-async function loadProducts(){
-  const snap = await getDocs(collection(db, "products"));
-  const list = document.getElementById('productList'); list.innerHTML="";
-  snap.forEach(d=>{
-    const p=d.data();
-    const div=document.createElement('div'); div.className="border rounded p-3 bg-white";
-    div.innerHTML=`<img src="${p.image}" class="h-32 w-full object-cover rounded mb-2"><b>${p.name}</b><p>৳${p.price}</p><button data-id="${d.id}" class="del bg-red-600 text-white px-2 py-1 rounded text-xs mt-2">Delete</button>`;
-    list.appendChild(div);
-  });
-  document.querySelectorAll('.del').forEach(b=>b.addEventListener('click', async e=>{ await deleteDoc(doc(db,"products",e.target.dataset.id)); loadProducts(); }));
-}
+const PASSWORD="J@hidul)";
+const lockScreen=document.getElementById('lockScreen');
+document.getElementById('loginBtn').addEventListener('click',()=>{const p=document.getElementById('passInput').value;if(p===PASSWORD){lockScreen.classList.add('hidden');localStorage.setItem('admin_auth','ok');}else{document.getElementById('loginErr').classList.remove('hidden');}});
+if(localStorage.getItem('admin_auth')==='ok'){lockScreen.classList.add('hidden');}
+const firebaseConfig={apiKey:"AIzaSyCbT-ST_tXZOitTn-VYKg4ygDKwsneFI74",authDomain:"my-website-5f35e.firebaseapp.com",projectId:"my-website-5f35e",storageBucket:"my-website-5f35e.firebasestorage.app",messagingSenderId:"396841768868",appId:"1:396841768868:web:a9b3bd7776796deb4a1331"};
+const app=initializeApp(firebaseConfig);const db=getFirestore(app);let base64Image="";
+document.getElementById('imageFile').addEventListener('change',(e)=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=(ev)=>{base64Image=ev.target.result;document.getElementById('previewImg').src=base64Image;document.getElementById('preview').classList.remove('hidden');};reader.readAsDataURL(file);});
+document.getElementById('saveBtn').addEventListener('click',async()=>{const name=document.getElementById('name').value,price=document.getElementById('price').value,category=document.getElementById('category').value,desc=document.getElementById('desc').value;if(!name||!price||!base64Image){alert("নাম, দাম, ছবি লাগবে");return;}await addDoc(collection(db,"products"),{name,price:Number(price),category,description:desc,image:base64Image,createdAt:serverTimestamp()});document.getElementById('status').innerText="✅ সেভ হয়েছে!";location.reload();});
+async function loadProducts(){const snap=await getDocs(collection(db,"products"));const list=document.getElementById('productList');list.innerHTML="";snap.forEach(d=>{const p=d.data();const div=document.createElement('div');div.className="border rounded p-3 bg-white";div.innerHTML=`<img src="${p.image}" class="h-32 w-full object-cover rounded mb-2"><b>${p.name}</b><p>৳${p.price}</p><button data-id="${d.id}" class="del bg-red-600 text-white px-2 py-1 rounded text-xs mt-2">Delete</button>`;list.appendChild(div);});document.querySelectorAll('.del').forEach(b=>b.addEventListener('click',async e=>{await deleteDoc(doc(db,"products",e.target.dataset.id));loadProducts();}));}
 loadProducts();
-</script>
-</body>
-</html>
+</script></body></html>
