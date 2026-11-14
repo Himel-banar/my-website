@@ -3,64 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himel | Official Links</title>
+<title>Himel Ahammed - Official</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;transition:0.4s;padding:20px}
-  body.light{background:#f0f2f5;color:#111}
-  .container{max-width:450px;margin:0 auto}
-  header{text-align:center;padding:30px 0}
-  .avatar{width:130px;height:130px;border-radius:50%;border:4px solid #00ff88;object-fit:cover;animation:glow 2s infinite alternate}
-  @keyframes glow{from{box-shadow:0 0 15px #00ff88} to{box-shadow:0 0 35px #00ff88}}
-  h1{margin-top:15px;font-size:28px}
-  .tag{color:#00ff88;margin-top:5px}
-  .card{background:#161616;padding:20px;border-radius:20px;margin-top:20px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
-  .light .card{background:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
-  .about{font-size:14px;line-height:1.6;color:#aaa;text-align:left;margin-bottom:15px}
-  .light .about{color:#444}
-  .link{display:block;background:#222;color:#fff;padding:15px;margin:12px 0;border-radius:14px;text-decoration:none;font-weight:600;transition:0.25s;border:1px solid #333;text-align:center}
-  .link:hover{transform:translateY(-3px) scale(1.02);background:#00ff88;color:#000;box-shadow:0 5px 20px rgba(0,255,136,0.4)}
-  .light .link{background:#e9e9e9;color:#000;border-color:#ddd}
-  .top-bar{display:flex;justify-content:space-between;align-items:center}
-  .btn{padding:8px 14px;border-radius:20px;border:none;cursor:pointer;font-weight:bold}
-  .btn-theme{background:#00ff88}
-  footer{text-align:center;margin-top:30px;font-size:12px;color:#666}
+body{font-family:'Outfit',sans-serif;background:#050507;color:white}
+.glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08)}
+.glow{box-shadow:0 0 40px rgba(124,92,255,0.3)}
+.btn-link:hover{transform:translateY(-2px);background:rgba(255,255,255,0.1)}
 </style>
 </head>
-<body>
-<div class="container">
-  <div class="top-bar">
-    <span>himel.dev</span>
-    <button class="btn btn-theme" onclick="toggleTheme()">Theme</button>
-  </div>
+<body class="flex justify-center p-0 md:p-4 min-h-screen">
+<div class="w-full max-w-[420px] bg-[#0e0e10] md:rounded-[2.5rem] border border-[#1e1e1e] overflow-hidden">
 
-  <header>
-    <img src="https://via.placeholder.com/150" class="avatar" id="mainImg">
-    <h1>Himel</h1>
-    <p class="tag">Vibe Coder - Frontend Learner</p>
-  </header>
-
-  <div class="card">
-    <p class="about">
-      Hey! I'm Himel. This is my official landing page. All my projects and social links are here. Built with HTML, CSS, JS and ready for Firebase.
-    </p>
-    <a class="link" href="https://facebook.com" target="_blank">Facebook</a>
-    <a class="link" href="https://instagram.com" target="_blank">Instagram</a>
-    <a class="link" href="https://github.com" target="_blank">View Source Code on GitHub</a>
-    <a class="link" href="mailto:himel@example.com">Email Me</a>
-    <div style="margin-top:15px; padding:10px; background:#222; border-radius:10px; font-size:12px;">
-      Firebase: Ready to Connect
-    </div>
-  </div>
-  <footer>© 2026 Himel - Built with Vibe Coding</footer>
+<!-- HEADER -->
+<div class="p-7 pb-2">
+<div class="flex justify-center"><div class="glass px-4 py-1 rounded-full text-[11px] tracking-widest text-gray-400">✓ Official Verified</div></div>
+<div class="flex justify-center mt-6"><div class="w-[88px] h-[88px] rounded-full bg-black border-2 border-[#222] flex items-center justify-center text-[48px] font-bold glow">H</div></div>
+<h1 class="text-[32px] font-bold text-center mt-4 bg-gradient-to-b from-white to-[#a78bfa] bg-clip-text text-transparent">Himel Ahammed</h1>
+<p class="text-center text-gray-400 text-[14px] mt-1">Music Lover<br><span class="text-[12px] opacity-70">All my official links in one place</span></p>
 </div>
 
-<script>
-  function toggleTheme(){
-    document.body.classList.toggle('light');
-    localStorage.setItem('theme', document.body.classList.contains('light')?'light':'dark');
-  }
-  if(localStorage.getItem('theme')==='light') document.body.classList.add('light');
+<!-- LINKS - আগের সব তথ্য থাকবে -->
+<div class="p-4 space-y-3">
+<a href="https://facebook.com" target="_blank" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-[#1877F2] flex items-center justify-center font-bold text-xl">f</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">Facebook</p><p class="text-xs text-gray-400">Himel Ahammed • Follow Me</p></div><span class="text-gray-500">›</span></a>
+<a href="https://youtube.com" target="_blank" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-[#FF0000] flex items-center justify-center">▶</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">YouTube</p><p class="text-xs text-gray-400">Himel Islamic400 • Subscribe</p></div><span class="text-gray-500">›</span></a>
+<a href="#" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-black flex items-center justify-center">♪</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">TikTok</p><p class="text-xs text-gray-400">@remix.music400 • Follow</p></div><span class="text-gray-500">›</span></a>
+<a href="https://wa.me/8801938250868" target="_blank" class="btn-link glass flex items-center p-3 rounded-2xl transition-all"><div class="w-12 h-12 rounded-xl bg-[#25D366] flex items-center justify-center">W</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">WhatsApp</p><p class="text-xs text-gray-400">01938-250868 • Message Me</p></div><span class="text-gray-500">›</span></a>
+<a href="#" class="btn-link glass flex items-center p-3 rounded-2xl transition-all border border-[#7c5cff]/30"><div class="w-12 h-12 rounded-xl bg-[#7c5cff] flex items-center justify-center">i</div><div class="ml-3 flex-1"><p class="font-semibold text-[15px]">Know About Himel</p><p class="text-xs text-gray-400">Information about Himel Ahammed</p></div><span class="text-gray-500">›</span></a>
+</div>
+
+<!-- GALLERY - Backend থেকে আসবে -->
+<div class="p-4 mt-2">
+<div class="flex justify-between items-center mb-3"><h2 class="font-bold">📸 My Gallery</h2><span id="photoCount" class="text-xs text-gray-500">0 photos</span></div>
+<div id="gallery" class="grid grid-cols-2 gap-3">
+<p class="col-span-2 text-center text-xs text-gray-500 py-10">Loading photos from Backend...</p>
+</div>
+</div>
+
+<!-- ADMIN PANEL - একই পেজের ভিতরে, Backend Configured -->
+<div class="p-4 mt-4 border-t border-[#1a1a1a]">
+<div id="adminLoginBtn" class="text-center"><button onclick="askPassword()" class="text-[10px] text-gray-600 hover:text-gray-300">Admin Login • Developer Access</button></div>
+<div id="adminPanel" class="hidden glass rounded-2xl p-4 mt-2">
+<h3 class="font-bold text-sm mb-3">🔐 Admin Panel (Backend)</h3>
+<input id="pName" type="text" placeholder="Photo Title (Ex: My New Photo)" class="w-full p-3 rounded-xl bg-black border border-[#222] text-sm mb-2 outline-none">
+<input id="pFile" type="file" accept="image/*" class="w-full text-xs text-gray-400 mb-3">
+<button onclick="uploadPhoto()" id="uploadBtn" class="w-full bg-[#7c5cff] py-3 rounded-xl font-bold text-sm">Upload to Backend</button>
+<p id="uploadStatus" class="text-[11px] text-center mt-2 text-gray-400"></p>
+<div id="adminList" class="mt-4 space-y-2 max-h-40 overflow-y-auto"></div>
+<button onclick="logoutAdmin()" class="w-full mt-3 text-xs text-red-400">Logout</button>
+</div>
+<p class="text-center text-[9px] text-gray-600 mt-6">Developer Himel • 2026 • Frontend + Firebase Backend</p>
+</div>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4yg4DKwsneFI74",
+  authDomain: "my-website-5f35e.firebaseapp.com",
+  projectId: "my-website-5f35e",
+  storageBucket: "my-website-5f35e.firebasestorage.app",
+  messagingSenderId: "396841768868",
+  appId: "1:396841768868:web:a9b3bd7776796deb4a1331"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const colRef = collection(db, "himel_photos");
+let isAdmin = false;
+const ADMIN_PASS = "J@hidul)";
+
+window.askPassword = () => {
+  const pass = prompt("Enter Admin Password:");
+  if(pass === ADMIN_PASS){
+    isAdmin = true;
+    document.getElementById('adminPanel').classList.remove('hidden');
+    document.getElementById('adminLoginBtn').classList.add('hidden');
+    loadAdminList();
+    alert("Welcome Himel! Backend Connected.");
+  } else if(pass){ alert("Wrong Password!"); }
+}
+window.logoutAdmin = () => {
+  isAdmin = false;
+  document.getElementById('adminPanel').classList.add('hidden');
+  document.getElementById('adminLoginBtn').classList.remove('hidden');
+}
+
+async function loadGallery(){
+  const q = query(colRef, orderBy("createdAt","desc"));
+  const snap = await getDocs(q);
+  const gallery = document.getElementById('gallery');
+  const count = document.getElementById('photoCount');
+  gallery.innerHTML = "";
+  count.innerText = snap.size + " photos";
+  if(snap.empty){ gallery.innerHTML = '<p class="col-span-2 text-center text-xs text-gray-500 py-10">No photos yet. Login as admin to add.</p>'; return; }
+  snap.forEach(d=>{
+    const data = d.data();
+    const div = document.createElement('div');
+    div.className = "rounded-2xl overflow-hidden glass";
+    div.innerHTML = `<img src="${data.image}" class="w-full h-32 object-cover"><div class="p-2"><p class="text-[11px] truncate">${data.name||'Photo'}</p></div>`;
+    gallery.appendChild(div);
+  });
+}
+
+async function loadAdminList(){
+  const snap = await getDocs(query(colRef, orderBy("createdAt","desc")));
+  const list = document.getElementById('adminList');
+  list.innerHTML = "";
+  snap.forEach(d=>{
+    const data = d.data();
+    list.innerHTML += `<div class="flex items-center gap-2 bg-black p-2 rounded-lg"><img src="${data.image}" class="w-10 h-10 rounded object-cover"><p class="flex-1 text-xs truncate">${data.name}</p><button onclick="deletePhoto('${d.id}')" class="text-red-400 text-xs">Delete</button></div>`;
+  });
+}
+
+window.uploadPhoto = async () => {
+  const name = document.getElementById('pName').value;
+  const fileInput = document.getElementById('pFile');
+  const status = document.getElementById('uploadStatus');
+  const btn = document.getElementById('uploadBtn');
+  if(!name || !fileInput.files[0]){ alert("Title and Photo both needed!"); return; }
+  btn.innerText = "Uploading to Backend..."; btn.disabled = true;
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    try{
+      await addDoc(colRef, { name: name, image: e.target.result, createdAt: serverTimestamp() });
+      status.innerText = "✓ Saved to Backend (Firestore)!";
+      document.getElementById('pName').value = ""; fileInput.value = "";
+      loadGallery(); loadAdminList();
+      setTimeout(()=>{ status.innerText=""; },2000);
+    }catch(err){ status.innerText = "Error: "+err.message; }
+    btn.innerText = "Upload to Backend"; btn.disabled = false;
+  };
+  reader.readAsDataURL(fileInput.files[0]);
+}
+
+window.deletePhoto = async (id) => {
+  if(!confirm("Delete this photo from backend?")) return;
+  await deleteDoc(doc(db, "himel_photos", id));
+  loadGallery(); loadAdminList();
+}
+
+loadGallery();
 </script>
 </body>
 </html>
