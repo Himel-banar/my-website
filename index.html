@@ -1,115 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himel Ahammed - Official Links</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#0f0f0f;color:#fff;display:flex;justify-content:center;padding:20px}
-.container{width:100%;max-width:400px}
-.card{background:#1a1a1a;border-radius:25px;padding:25px;text-align:center;position:relative;border:1px solid #222}
-.admin-btn{position:absolute;top:15px;right:15px;background:#2a2a2a;border:none;color:#fff;padding:6px 12px;border-radius:20px;cursor:pointer;font-size:12px}
-.avatar{width:90px;height:90px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:bold;margin:25px auto 15px;border:2px solid #333}
-.name{font-size:26px;font-weight:bold;color:#d8a0ff;text-shadow:0 0 10px #a855f7;margin-bottom:5px}
-.bio{color:#888;font-size:13px;margin-bottom:22px;line-height:1.5}
-.link{background:#242424;border-radius:12px;padding:12px;display:flex;align-items:center;margin-bottom:12px;text-decoration:none;color:#fff}
-.link:hover{background:#2f2f2f}
-.icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-right:12px;font-size:20px;font-weight:bold}
-.fb{background:#1877F2} .yt{background:#FF0000} .tk{background:#000} .wa{background:#25D366}
-.link-text{text-align:left;flex:1}
-.link-text b{font-size:15px} .link-text span{font-size:12px;color:#888;display:block;margin-top:2px}
-.arrow{color:#555;font-size:22px}
-.footer{margin-top:18px;font-size:11px;color:#555}
-.gallery-card{background:#1a1a1a;border-radius:20px;padding:15px;margin-top:15px;border:1px solid #222}
-.gallery-card h3{font-size:16px;margin-bottom:12px;text-align:left}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.g-item{position:relative;border-radius:12px;overflow:hidden;height:140px;background:#222}
-.g-item img{width:100%;height:100%;object-fit:cover}
-.del{position:absolute;top:6px;right:6px;background:red;border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;display:none;font-weight:bold}
-.g-item.admin .del{display:block}
-</style>
-</head>
-<body>
-<div class="container">
-  <div class="card">
-    <button class="admin-btn" onclick="adminLogin()">👤 Admin</button>
-    <div class="avatar">H</div>
-    <div class="name">Himel Ahammed</div>
-    <div class="bio">Music Lover<br>All my official links in one place</div>
-
-    <a href="https://facebook.com" target="_blank" class="link"><div class="icon fb">f</div><div class="link-text"><b>Facebook</b><span>Himel Ahammed • Follow Me</span></div><div class="arrow">›</div></a>
-    <a href="https://youtube.com" target="_blank" class="link"><div class="icon yt">▶</div><div class="link-text"><b>YouTube</b><span>Himel Islamic400 • Subscribe</span></div><div class="arrow">›</div></a>
-    <a href="https://tiktok.com" target="_blank" class="link"><div class="icon tk">♫</div><div class="link-text"><b>TikTok</b><span>@remix.music400 • Follow</span></div><div class="arrow">›</div></a>
-    <a href="https://wa.me/8801938250868" target="_blank" class="link"><div class="icon wa">W</div><div class="link-text"><b>WhatsApp</b><span>01938-250868 • Message Me</span></div><div class="arrow">›</div></a>
-
-    <div class="footer">Developer Himel • 2026</div>
-  </div>
-
-  <div class="gallery-card">
-    <h3>📸 My Gallery</h3>
-    <div class="gallery" id="gallery"></div>
-    <div id="adminPanel" style="display:none;margin-top:12px;">
-      <button onclick="addImage()" style="width:100%;padding:11px;background:#a855f7;border:none;border-radius:10px;color:white;cursor:pointer;font-weight:bold;">+ Add Photo</button>
-      <p style="font-size:10px;color:#00ff88;margin-top:6px;text-align:center;">✅ Admin Mode ON</p>
-    </div>
-  </div>
-</div>
-
-<script>
-let isAdmin = false;
-const ADMIN_PASS = "J@hidul)";
-
-function adminLogin(){
-  let p = prompt("Admin Password দাও:");
-  if(p === ADMIN_PASS){
-    isAdmin = true;
-    document.getElementById('adminPanel').style.display='block';
-    renderGallery();
-    alert("✅ Admin Login Success! এখন তুমি ছবি Add/Delete করতে পারবে");
-  } else if(p !== null){
-    alert("❌ Wrong Password!");
-  }
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Himel Ahammed</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}body{background:#0a0a0b;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;flex-direction:column}.admin-top{position:fixed;top:15px;right:15px;z-index:1000}.admin-btn{background:#232326;border:1px solid #333;color:#fff;padding:8px 14px;border-radius:10px;font-size:12px;cursor:pointer}.card{width:100%;max-width:400px;background:#18181b;border:1px solid #2a2a2e;border-radius:32px;padding:32px 24px;text-align:center}.verified{display:inline-flex;align-items:center;gap:6px;background:#1e1e20;border:1px solid #2e2e32;border-radius:20px;padding:6px 14px;font-size:11px;color:#a1a1aa;margin-bottom:18px}.verified i{color:#1DA1F2}.p{width:110px;height:110px;border-radius:50%;margin:0 auto 16px;background:#000;border:3px solid #2a2a2e;display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff;font-weight:700}h1{font-size:27px;font-weight:700}.premium-name{background:linear-gradient(90deg,#f5f3ff 0%,#a78bfa 45%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:purpleWhite 2.2s ease-in-out infinite alternate} @keyframes purpleWhite{0%{text-shadow:0 0 6px rgba(168,85,247,0.6)}100%{text-shadow:0 0 10px rgba(168,85,247,0.9),0 0 18px rgba(255,255,255,0.6);filter:brightness(1.15)}}.bio{color:#a1a1aa;font-size:13px;margin:10px 0 26px;line-height:1.6}.link{width:100%;display:flex;align-items:center;justify-content:space-between;background:#232326;border:1px solid #333;border-radius:16px;padding:16px 18px;text-decoration:none;color:#fff;margin-bottom:14px}.left{display:flex;align-items:center;gap:14px}.ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px}.fb{background:#1877F2}.yt{background:#FF0000}.tk{background:#000;border:1px solid #333}.wa{background:#25D366}.footer{margin-top:26px;color:#666;font-size:11px}.gallery-wrap{width:100%;max-width:400px;margin-top:20px;background:#18181b;border:1px solid #2a2a2e;border-radius:24px;padding:18px}.gallery-wrap h3{color:#fff;font-size:16px;margin-bottom:12px}.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.gallery-grid img{width:100%;height:110px;object-fit:cover;border-radius:12px;border:1px solid #333}.no-img{color:#666;font-size:13px;text-align:center;padding:20px}#loginModal,#uploadModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:2000;padding:20px}.modalBox{background:#18181b;border:1px solid #333;border-radius:20px;padding:20px;width:100%;max-width:350px}.modalBox h3{color:#fff;margin-bottom:12px}.modalBox input{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#232326;color:#fff;margin-bottom:12px}.modalBox button{width:100%;padding:12px;border-radius:10px;border:none;background:#8a5cff;color:#fff;font-weight:700;cursor:pointer;margin-bottom:8px}</style></head><body><div class="admin-top"><button class="admin-btn" onclick="openLogin()"><i class="fas fa-user-shield"></i> Admin</button></div><div class="card"><div class="verified"><i class="fas fa-check-circle"></i> Official Verified</div><div class="p">H</div><h1><span class="premium-name">Himel Ahammed</span></h1><p class="bio">Music Lover<br>All my official links in one place</p><a class="link" href="https://www.facebook.com/share/1a2CxFq96K/" target="_blank"><div class="left"><div class="ic fb"><i class="fab fa-facebook-f"></i></div><div style="text-align:left"><b>Facebook</b><br><small style="color:#a1a1aa">Himel Ahammed • Follow Me</small></div></div><i class="fas fa-chevron-right"></i></a><a class="link" href="https://www.youtube.com/@Himelislamic400" target="_blank"><div class="left"><div class="ic yt"><i class="fab fa-youtube"></i></div><div style="text-align:left"><b>YouTube</b><br><small style="color:#a1a1aa">Himel Islamic400 • Subscribe</small></div></div><i class="fas fa-chevron-right"></i></a><a class="link" href="https://www.tiktok.com/@remix.music400" target="_blank"><div class="left"><div class="ic tk"><i class="fab fa-tiktok"></i></div><div style="text-align:left"><b>TikTok</b><br><small style="color:#a1a1aa">@remix.music400 • Follow</small></div></div><i class="fas fa-chevron-right"></i></a><a class="link" href="https://wa.me/8801938250868" target="_blank"><div class="left"><div class="ic wa"><i class="fab fa-whatsapp"></i></div><div style="text-align:left"><b>WhatsApp</b><br><small style="color:#a1a1aa">01938-250868 • Message Me</small></div></div><i class="fas fa-chevron-right"></i></a><div class="footer">Developer Himel • 2026</div></div><div class="gallery-wrap"><h3>📸 My Gallery</h3><div id="gallery" class="gallery-grid"></div><div id="noImg" class="no-img">Loading...</div></div><div id="loginModal" onclick="closeLogin()"><div class="modalBox" onclick="event.stopPropagation()"><h3>Admin Login</h3><input type="password" id="pass" placeholder="Enter Password"><button onclick="checkPass()">Login</button><button style="background:#232326" onclick="closeLogin()">Cancel</button><p id="err" style="color:#ff4444;font-size:12px;margin-top:8px;display:none">Wrong Password!</p></div></div><div id="uploadModal" onclick="closeUpload()"><div class="modalBox" onclick="event.stopPropagation()"><h3>Upload Photo</h3><input type="file" id="fileInput" accept="image/*"><button onclick="uploadImg()">Upload</button><button style="background:#232326" onclick="logout()">Logout</button><button style="background:#232326" onclick="closeUpload()">Close</button><p id="upStatus" style="color:#a1a1aa;font-size:12px;text-align:center;margin-top:8px"></p></div></div><script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4ygDKwsneFI74",
+  authDomain: "my-website-5f35e.firebaseapp.com",
+  projectId: "my-website-5f35e",
+  storageBucket: "my-website-5f35e.firebasestorage.app",
+  messagingSenderId: "396841768868",
+  appId: "1:396841768868:web:a9b3bd7776796deb4a1331",
+  measurementId: "G-BJD027R0MM"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const PASSWORD="J@hidul)";
+function openLogin(){if(localStorage.getItem('himel_admin')==='yes'){document.getElementById('uploadModal').style.display='flex';return}document.getElementById('loginModal').style.display='flex'}
+function closeLogin(){document.getElementById('loginModal').style.display='none';document.getElementById('err').style.display='none';document.getElementById('pass').value=''}
+function checkPass(){if(document.getElementById('pass').value===PASSWORD){localStorage.setItem('himel_admin','yes');closeLogin();document.getElementById('uploadModal').style.display='flex';}else{document.getElementById('err').style.display='block'}}
+function closeUpload(){document.getElementById('uploadModal').style.display='none';document.getElementById('upStatus').innerText=''}
+function logout(){localStorage.removeItem('himel_admin');closeUpload()}
+function loadGallery(){
+  const grid=document.getElementById('gallery');
+  const no=document.getElementById('noImg');
+  grid.innerHTML='';
+  db.collection('himel_photos').orderBy('createdAt','desc').get().then(snap=>{
+    if(snap.empty){no.innerText='No photos yet';no.style.display='block';return}
+    no.style.display='none';
+    snap.forEach(d=>{
+      const data=d.data();
+      if(data.image) grid.innerHTML+=`<img src="${data.image}">`;
+    });
+  }).catch(e=>{no.innerText='Error: '+e.message});
 }
-
-function getImages(){
-  return JSON.parse(localStorage.getItem('himelGallery') || '[]');
+function uploadImg(){
+  const file=document.getElementById('fileInput').files[0];
+  if(!file)return alert('Select image');
+  if(localStorage.getItem('himel_admin')!=='yes')return alert('Login first!');
+  const status=document.getElementById('upStatus');
+  status.innerText='Uploading...';
+  const reader=new FileReader();
+  reader.onload=e=>{
+    db.collection('himel_photos').add({
+      image:e.target.result,
+      name:"New photo",
+      createdAt:firebase.firestore.FieldValue.serverTimestamp()
+    }).then(()=>{
+      status.innerText='Uploaded!';
+      document.getElementById('fileInput').value='';
+      loadGallery();
+      setTimeout(closeUpload,1000);
+    }).catch(err=>{status.innerText=err.message});
+  };
+  reader.readAsDataURL(file);
 }
-
-function renderGallery(){
-  const gallery = document.getElementById('gallery');
-  const images = getImages();
-  gallery.innerHTML = '';
-  if(images.length === 0 && !isAdmin){
-    gallery.innerHTML = '<p style="grid-column:span 2;color:#555;font-size:12px;padding:20px;">No photos yet</p>';
-    return;
-  }
-  images.forEach((img, i)=>{
-    gallery.innerHTML += `<div class="g-item ${isAdmin?'admin':''}"><img src="${img}"><button class="del" onclick="deleteImage(${i})">✕</button></div>`;
-  });
-}
-
-function addImage(){
-  if(!isAdmin) return alert("Only Admin!");
-  let url = prompt("ছবির Direct Link দাও:\n(Google থেকে ছবির লিংক কপি করো)");
-  if(url && url.trim() !== ""){
-    let images = getImages();
-    images.push(url.trim());
-    localStorage.setItem('himelGallery', JSON.stringify(images));
-    renderGallery();
-  }
-}
-
-function deleteImage(i){
-  if(!isAdmin) return alert("Only Admin can delete!");
-  if(!confirm("এই ছবিটা ডিলেট করবে?")) return;
-  let images = getImages();
-  images.splice(i,1);
-  localStorage.setItem('himelGallery', JSON.stringify(images));
-  renderGallery();
-}
-
-renderGallery();
-</script>
-</body>
-</html>
+loadGallery();
+</script></body></html>
