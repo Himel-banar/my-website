@@ -8,19 +8,89 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Firebase SDKs (আপনার আগের ভার্সন অনুযায়ী রাখা হয়েছে) -->
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Poppins, sans-serif; }
     body { background: #0a0a0b; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; flex-direction: column; }
+    
+    /* Admin Button */
     .admin-top { position: fixed; top: 15px; right: 15px; z-index: 1000; }
     .admin-btn { background: #232326; border: 1px solid #333; color: #fff; padding: 8px 14px; border-radius: 10px; font-size: 12px; cursor: pointer; }
+
     .card { width: 100%; max-width: 400px; background: #18181b; border: 1px solid #2a2a2e; border-radius: 32px; padding: 32px 24px; text-align: center; }
     .verified { display: inline-flex; align-items: center; gap: 6px; background: #1e1e20; border: 1px solid #2e2e32; border-radius: 20px; padding: 6px 14px; font-size: 11px; color: #a1a1aa; margin-bottom: 18px; }
     .verified i { color: #1DA1F2; }
-    .p { width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 16px; background: #000; border: 3px solid #2a2a2e; display: flex; align-items: center; justify-content: center; font-size: 44px; color: #fff; font-weight: 700; }
+
+    /* =========================================
+       ইউনিক ও ক্লিন H বৃত্ত (Music Trigger)
+       ========================================= */
+    .p-wrap {
+      position: relative;
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .p-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #8a5cff, #38bdf8, #a78bfa, #8a5cff);
+      padding: 3px;
+      transition: 0.4s ease;
+      opacity: 0.75;
+    }
+    .p {
+      position: relative;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #1c1c24, #050507);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      color: #fff;
+      font-weight: 700;
+      z-index: 2;
+      box-shadow: inset 0 0 18px rgba(138, 92, 255, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+    .p-wrap:hover .p {
+      transform: scale(1.03);
+      box-shadow: inset 0 0 22px rgba(167, 139, 250, 0.45);
+    }
+    .p-wrap:active .p {
+      transform: scale(0.96);
+    }
+
+    /* মিউজিক চলার সময় ইউনিক অ্যানিমেশন */
+    .p-wrap.playing .p-ring {
+      opacity: 1;
+      animation: spinRing 3s linear infinite;
+      box-shadow: 0 0 22px rgba(138, 92, 255, 0.7);
+    }
+    .p-wrap.playing .p {
+      animation: beatPulse 1.2s ease-in-out infinite;
+      box-shadow: inset 0 0 26px rgba(167, 139, 250, 0.6);
+    }
+    @keyframes spinRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes beatPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
     h1 { font-size: 27px; font-weight: 700; }
     .premium-name {
       background: linear-gradient(90deg, #f5f3ff 0%, #a78bfa 45%, #ffffff 100%);
@@ -36,7 +106,7 @@
     .bio { color: #a1a1aa; font-size: 13px; margin: 10px 0 20px; line-height: 1.6; }
 
     /* =========================================
-       নতুন যুক্ত করা Live & Total Visitor স্টাইল
+       Live & Total Visitor স্টাইল
        ========================================= */
     .visitor-bar {
       display: flex;
@@ -61,7 +131,6 @@
       color: #fff;
       font-size: 13px;
     }
-    /* লাইভ ভিজিটরের সবুজ পালসিং ডট */
     .live-dot {
       width: 8px;
       height: 8px;
@@ -86,7 +155,7 @@
     .wa { background: #25D366; }
     .footer { margin-top: 26px; color: #666; font-size: 11px; }
 
-    /* Gallery & Modals (আগের মতোই রাখা হয়েছে) */
+    /* Gallery & Modals */
     .gallery-wrap { width: 100%; max-width: 400px; margin-top: 20px; background: #18181b; border: 1px solid #2a2a2e; border-radius: 24px; padding: 18px; }
     .gallery-wrap h3 { color: #fff; font-size: 16px; margin-bottom: 12px; }
     .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -112,13 +181,24 @@
     <button class="admin-btn" onclick="openLogin()"><i class="fas fa-user-shield"></i> Admin</button>
   </div>
 
+  <!-- আপনার ফোনের মিউজিক ফাইল (song.mp3) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="card">
     <div class="verified"><i class="fas fa-check-circle"></i> Official Verified</div>
-    <div class="p">H</div>
+    
+    <!-- ইউনিক ও ক্লিন H বৃত্ত -->
+    <div id="avatarBtn" class="p-wrap" onclick="toggleMusic()">
+      <div class="p-ring"></div>
+      <div class="p">H</div>
+    </div>
+
     <h1><span class="premium-name">Himel Ahammed</span></h1>
     <p class="bio">Music Lover<br>All my official links in one place</p>
 
-    <!-- নতুন ফিচার: লাইভ ভিজিটর + টোটাল ভিজিটর -->
+    <!-- লাইভ ভিজিটর + টোটাল ভিজিটর -->
     <div class="visitor-bar">
       <div class="v-pill" title="Currently Active Visitors">
         <span class="live-dot"></span>
@@ -205,6 +285,25 @@
   </div>
 
   <script>
+    /* ==========================================================
+       H বৃত্তে ক্লিক করলে মিউজিক চালু/বন্ধ হওয়ার সিস্টেম
+       ========================================================== */
+    function toggleMusic() {
+      const audio = document.getElementById('bgMusic');
+      const avatarBtn = document.getElementById('avatarBtn');
+
+      if (audio.paused) {
+        audio.play().then(() => {
+          avatarBtn.classList.add('playing');
+        }).catch(err => {
+          console.log('Music error:', err);
+        });
+      } else {
+        audio.pause();
+        avatarBtn.classList.remove('playing');
+      }
+    }
+
     const firebaseConfig = {
       apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4ygDKwsneFI74",
       authDomain: "my-website-5f35e.firebaseapp.com",
@@ -218,7 +317,7 @@
     const db = firebase.firestore();
 
     /* ==========================================================
-       লাইভ ভিজিটর + টোটাল ভিজিটর ট্র্যাকিং সিস্টেম (Firebase Firestore)
+       লাইভ ভিজিটর + টোটাল ভিজিটর ট্র্যাকিং সিস্টেম
        ========================================================== */
     function initVisitorTracker() {
       const statsRef = db.collection('site_stats').doc('visitors');
@@ -286,7 +385,7 @@
 
 
     /* ==========================================================
-       আপনার আগের অ্যাডমিন ও গ্যালারি কোড
+       অ্যাডমিন ও গ্যালারি কোড
        ========================================================== */
     const PASSWORD = "J@hidul)";
     let currentViewId = null;
@@ -355,7 +454,6 @@
       }).catch(e => { no.innerText = 'Error: ' + e.message; });
     }
 
-    // স্মার্ট কম্প্রেশন: ছবির সাইজ 800KB-এর নিচে না নামা পর্যন্ত অটোমেটিক অপ্টিমাইজ করবে
     function smartCompressImage(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -368,7 +466,6 @@
             let quality = 0.75;
             let dataUrl = '';
 
-            // লুপ চালিয়ে নিশ্চিত করা হবে যেন ফাইল সাইজ সবসময় ৮০০ কিলোবাইটের নিচে থাকে
             for (let attempt = 0; attempt < 5; attempt++) {
               const canvas = document.createElement('canvas');
               let width = img.width;
@@ -386,13 +483,11 @@
 
               dataUrl = canvas.toDataURL('image/jpeg', quality);
               
-              // বাইট সাইজ চেক করা (Firestore লিমিট 1,048,487 bytes)
               const byteSize = new Blob([dataUrl]).size;
               if (byteSize < 800000) {
-                break; // ৮০০ KB-এর নিচে নেমে গেলে লুপ বন্ধ হবে
+                break;
               }
 
-              // সাইজ বড় থাকলে পরবর্তী ধাপে রেজোলিউশন ও কোয়ালিটি আরও কমানো হবে
               maxWidth = Math.round(maxWidth * 0.75);
               quality = Math.max(0.4, quality - 0.12);
             }
