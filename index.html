@@ -155,24 +155,229 @@
     .wa { background: #25D366; }
     .footer { margin-top: 26px; color: #666; font-size: 11px; }
 
-    /* Gallery & Modals */
-    .gallery-wrap { width: 100%; max-width: 400px; margin-top: 20px; background: #18181b; border: 1px solid #2a2a2e; border-radius: 24px; padding: 18px; }
-    .gallery-wrap h3 { color: #fff; font-size: 16px; margin-bottom: 12px; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .g-item { position: relative; cursor: pointer; }
-    .gallery-grid img { width: 100%; height: 110px; object-fit: cover; border-radius: 12px; border: 1px solid #333; display: block; }
-    .delBtn { position: absolute; top: 6px; right: 6px; background: #ff1a1a; border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px; display: none; align-items: center; justify-content: center; z-index: 2; }
+    /* =========================================
+       My Gallery ট্রিগার কার্ড (নিচে থাকবে)
+       ========================================= */
+    .gallery-trigger { 
+      width: 100%; 
+      max-width: 400px; 
+      margin-top: 16px; 
+      background: #18181b; 
+      border: 1px solid #2a2a2e; 
+      border-radius: 24px; 
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: all 0.25s ease;
+    }
+    .gallery-trigger:hover {
+      background: #1e1e22;
+      border-color: #3f3f46;
+      transform: translateY(-1px);
+    }
+    .gallery-trigger:active {
+      transform: scale(0.98);
+    }
+    .gh-left {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+    .gh-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, rgba(138, 92, 255, 0.2), rgba(56, 189, 248, 0.15));
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #a78bfa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+    .gh-text {
+      text-align: left;
+    }
+    .gh-text h3 {
+      color: #fff;
+      font-size: 15px;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .gh-text small {
+      color: #a1a1aa;
+      font-size: 11px;
+      font-weight: 400;
+    }
+    .gh-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .photo-badge {
+      background: #232328;
+      border: 1px solid #333;
+      color: #d4d4d8;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .gh-arrow {
+      color: #a1a1aa;
+      font-size: 13px;
+    }
+
+    /* =========================================
+       পপ-আপ পেজ আকারে Gallery Modal
+       ========================================= */
+    #galleryModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 7, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2200;
+      padding: 18px;
+      animation: fadeInModal 0.25s ease;
+    }
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .gallery-page-box {
+      width: 100%;
+      max-width: 410px;
+      max-height: 82vh;
+      background: #141417;
+      border: 1px solid #2e2e35;
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(138, 92, 255, 0.12);
+      animation: popUpBox 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes popUpBox {
+      from { transform: scale(0.92) translateY(14px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .gp-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: #18181c;
+      border-bottom: 1px solid #27272c;
+    }
+    .gp-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .gp-title i {
+      color: #a78bfa;
+    }
+    .gp-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #232329;
+      border: 1px solid #333;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+    .gp-close:hover {
+      background: #ff1a1a;
+      border-color: #ff1a1a;
+    }
+    .gp-body {
+      padding: 16px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+    .g-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 13px; border: 1px solid #2c2c34; }
+    .gallery-grid img { width: 100%; height: 96px; object-fit: cover; display: block; transition: transform 0.25s ease; }
+    .g-item:hover img { transform: scale(1.06); }
+    .delBtn { position: absolute; top: 5px; right: 5px; background: #ff1a1a; border: none; color: #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 12px; display: none; align-items: center; justify-content: center; z-index: 2; }
     .g-item.admin .delBtn { display: flex; }
-    .no-img { color: #666; font-size: 13px; text-align: center; padding: 20px; }
-    #loginModal, #uploadModal, #viewModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
+    .no-img { color: #71717a; font-size: 13px; text-align: center; padding: 30px 10px; }
+
+    /* =========================================
+       ফুল ভিউ ছবি + চারপাশে প্রিমিয়াম লাইটিং গ্লো
+       ========================================= */
+    #viewModal { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(3, 3, 5, 0.94); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none; 
+      justify-content: center; 
+      align-items: center; 
+      z-index: 3000; 
+      padding: 20px; 
+      flex-direction: column; 
+    }
+    .glow-frame {
+      position: relative;
+      padding: 4px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #8a5cff, #38bdf8, #ec4899, #a78bfa, #8a5cff);
+      background-size: 300% 300%;
+      animation: borderLightFlow 3.5s ease infinite, photoGlowPulse 2.4s ease-in-out infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 95%;
+    }
+    @keyframes borderLightFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes photoGlowPulse {
+      0% {
+        box-shadow: 0 0 20px rgba(138, 92, 255, 0.65), 0 0 40px rgba(56, 189, 248, 0.35);
+      }
+      100% {
+        box-shadow: 0 0 32px rgba(167, 139, 250, 0.95), 0 0 65px rgba(236, 72, 153, 0.55), 0 0 90px rgba(56, 189, 248, 0.4);
+      }
+    }
+    #viewImg { 
+      max-width: 100%; 
+      max-height: 74vh; 
+      border-radius: 17px; 
+      display: block;
+      background: #0a0a0b;
+    }
+    .viewBtns { display: flex; gap: 10px; margin-top: 20px; width: 100%; max-width: 350px; }
+    .viewBtns button { flex: 1; padding: 12px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; }
+
+    /* Login & Upload Modals */
+    #loginModal, #uploadModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 2500; padding: 20px; }
     .modalBox { background: #18181b; border: 1px solid #333; border-radius: 20px; padding: 20px; width: 100%; max-width: 350px; }
     .modalBox h3 { color: #fff; margin-bottom: 12px; }
     .modalBox input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #333; background: #232326; color: #fff; margin-bottom: 12px; }
     .modalBox button { width: 100%; padding: 12px; border-radius: 10px; border: none; background: #8a5cff; color: #fff; font-weight: 700; cursor: pointer; margin-bottom: 8px; }
-    #viewModal { background: rgba(0,0,0,0.92); z-index: 3000; flex-direction: column; }
-    #viewImg { max-width: 95%; max-height: 80vh; border-radius: 16px; border: 2px solid #333; }
-    .viewBtns { display: flex; gap: 10px; margin-top: 18px; width: 100%; max-width: 350px; }
-    .viewBtns button { flex: 1; padding: 12px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -245,10 +450,36 @@
     <div class="footer">Developer Himel • 2026</div>
   </div>
 
-  <div class="gallery-wrap">
-    <h3>📸 My Gallery</h3>
-    <div id="gallery" class="gallery-grid"></div>
-    <div id="noImg" class="no-img">Loading...</div>
+  <!-- My Gallery বাটন কার্ড (ক্লিক করলে উপরে পেজ আকারে খুলবে) -->
+  <div class="gallery-trigger" onclick="openGalleryModal()">
+    <div class="gh-left">
+      <div class="gh-icon"><i class="fas fa-images"></i></div>
+      <div class="gh-text">
+        <h3>My Gallery</h3>
+        <small>Tap to open gallery</small>
+      </div>
+    </div>
+    <div class="gh-right">
+      <span id="photoCount" class="photo-badge">...</span>
+      <i class="fas fa-chevron-right gh-arrow"></i>
+    </div>
+  </div>
+
+  <!-- উপরে পপ-আপ পেজ আকারে Gallery Modal -->
+  <div id="galleryModal" onclick="closeGalleryModal()">
+    <div class="gallery-page-box" onclick="event.stopPropagation()">
+      <div class="gp-header">
+        <div class="gp-title">
+          <i class="fas fa-images"></i>
+          <span>My Gallery</span>
+        </div>
+        <button class="gp-close" onclick="closeGalleryModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="gp-body">
+        <div id="gallery" class="gallery-grid"></div>
+        <div id="noImg" class="no-img">Loading...</div>
+      </div>
+    </div>
   </div>
 
   <!-- Login Modal -->
@@ -274,17 +505,29 @@
     </div>
   </div>
 
-  <!-- Full View Modal -->
+  <!-- Full View Modal (চারপাশে লাইটিং গ্লো সহ) -->
   <div id="viewModal" onclick="closeView()">
-    <img id="viewImg" src="">
-    <div class="viewBtns">
-      <button style="background:#232326;color:#fff" onclick="closeView()">Close</button>
+    <div class="glow-frame" onclick="event.stopPropagation()">
+      <img id="viewImg" src="">
+    </div>
+    <div class="viewBtns" onclick="event.stopPropagation()">
+      <button style="background:#232326;color:#fff;border:1px solid #333" onclick="closeView()">Close</button>
       <button id="viewDelBtn" style="background:#ff1a1a;color:#fff;display:none" onclick="deleteCurrentImg()">Delete This Photo</button>
     </div>
-    <p style="color:#666;font-size:11px;margin-top:10px">Click outside to close</p>
+    <p style="color:#888;font-size:11px;margin-top:10px">Click outside to close</p>
   </div>
 
   <script>
+    /* ==========================================================
+       Gallery Popup Page ওপেন ও ক্লোজ ফাংশন
+       ========================================================== */
+    function openGalleryModal() {
+      document.getElementById('galleryModal').style.display = 'flex';
+    }
+    function closeGalleryModal() {
+      document.getElementById('galleryModal').style.display = 'none';
+    }
+
     /* ==========================================================
        H বৃত্তে ক্লিক করলে মিউজিক চালু/বন্ধ হওয়ার সিস্টেম
        ========================================================== */
@@ -440,18 +683,30 @@
     function loadGallery() {
       const grid = document.getElementById('gallery');
       const no = document.getElementById('noImg');
+      const countBadge = document.getElementById('photoCount');
       grid.innerHTML = '';
       db.collection('himel_photos').orderBy('createdAt', 'desc').get().then(snap => {
-        if (snap.empty) { no.innerText = 'No photos yet'; no.style.display = 'block'; return; }
+        if (snap.empty) { 
+          no.innerText = 'No photos yet'; 
+          no.style.display = 'block'; 
+          countBadge.innerText = '0 Photos';
+          return; 
+        }
         no.style.display = 'none';
+        let count = 0;
         snap.forEach(d => {
           const data = d.data();
           const id = d.id;
           if (data.image) {
+            count++;
             grid.innerHTML += `<div class="g-item ${isAdmin() ? 'admin' : ''}"><img src="${data.image}" onclick="openView('${data.image}','${id}')"><button class="delBtn" onclick="event.stopPropagation(); deleteImg('${id}')"><i class="fas fa-times"></i></button></div>`;
           }
         });
-      }).catch(e => { no.innerText = 'Error: ' + e.message; });
+        countBadge.innerText = count + (count === 1 ? ' Photo' : ' Photos');
+      }).catch(e => { 
+        no.innerText = 'Error: ' + e.message; 
+        countBadge.innerText = '0';
+      });
     }
 
     function smartCompressImage(file) {
