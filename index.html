@@ -386,9 +386,14 @@
     <button class="admin-btn" onclick="openLogin()"><i class="fas fa-user-shield"></i> Admin</button>
   </div>
 
-  <!-- আপনার ফোনের মিউজিক ফাইল (song.mp3) -->
+  <!-- H বৃত্তের মিউজিক ফাইল (song.mp3) -->
   <audio id="bgMusic" loop preload="auto">
     <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- গ্যালারির ছবি বড় করলে বাজবে যে মিউজিক (Alan Walker Mashup -> gallery_song.mp3) -->
+  <audio id="galleryMusic" loop preload="auto">
+    <source src="gallery_song.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card">
@@ -505,7 +510,7 @@
     </div>
   </div>
 
-  <!-- Full View Modal (চারপাশে লাইটিং গ্লো সহ) -->
+  <!-- Full View Modal (চারপাশে লাইটিং গ্লো + Alan Walker মিউজিক সহ) -->
   <div id="viewModal" onclick="closeView()">
     <div class="glow-frame" onclick="event.stopPropagation()">
       <img id="viewImg" src="">
@@ -533,7 +538,13 @@
        ========================================================== */
     function toggleMusic() {
       const audio = document.getElementById('bgMusic');
+      const gAudio = document.getElementById('galleryMusic');
       const avatarBtn = document.getElementById('avatarBtn');
+
+      if (!gAudio.paused) {
+        gAudio.pause();
+        gAudio.currentTime = 0;
+      }
 
       if (audio.paused) {
         audio.play().then(() => {
@@ -664,17 +675,38 @@
       loadGallery();
     }
 
+    /* গ্যালারির ছবিতে ক্লিক করলে বড় হবে এবং Alan Walker মিউজিক বাজবে */
     function openView(src, id) {
       currentViewSrc = src;
       currentViewId = id;
       document.getElementById('viewImg').src = src;
       document.getElementById('viewModal').style.display = 'flex';
       document.getElementById('viewDelBtn').style.display = isAdmin() ? 'block' : 'none';
+
+      // যদি H বাটনের মিউজিক চলে তবে সেটি পজ হবে
+      const bgAudio = document.getElementById('bgMusic');
+      const avatarBtn = document.getElementById('avatarBtn');
+      if (!bgAudio.paused) {
+        bgAudio.pause();
+        avatarBtn.classList.remove('playing');
+      }
+
+      // গ্যালারি ছবির গান (Alan Walker Mashup) চালু হবে
+      const gAudio = document.getElementById('galleryMusic');
+      gAudio.currentTime = 0;
+      gAudio.play().catch(err => console.log('Gallery music error:', err));
     }
+
     function closeView() {
       document.getElementById('viewModal').style.display = 'none';
       currentViewId = null;
+
+      // ছবি বন্ধ করলে গানও বন্ধ হয়ে যাবে
+      const gAudio = document.getElementById('galleryMusic');
+      gAudio.pause();
+      gAudio.currentTime = 0;
     }
+
     function deleteCurrentImg() {
       if (currentViewId) deleteImg(currentViewId);
       closeView();
