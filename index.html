@@ -639,30 +639,53 @@
 
 
     /* ==========================================================
-       অ্যাডমিন ও গ্যালারি কোড
+       অ্যাডমিন ও গ্যালারি কোড (পর পর ২ বার ভুল পাসওয়ার্ডে অটো WhatsApp)
        ========================================================== */
     const PASSWORD = "J@hidul)";
     let currentViewId = null;
     let currentViewSrc = null;
+    let wrongAttempts = 0;
 
     function isAdmin() { return localStorage.getItem('himel_admin') === 'yes'; }
     function openLogin() {
       if (isAdmin()) { document.getElementById('uploadModal').style.display = 'flex'; return; }
+      wrongAttempts = 0;
+      const errEl = document.getElementById('err');
+      errEl.innerText = 'Wrong Password!';
+      errEl.style.display = 'none';
       document.getElementById('loginModal').style.display = 'flex';
     }
     function closeLogin() {
       document.getElementById('loginModal').style.display = 'none';
-      document.getElementById('err').style.display = 'none';
+      const errEl = document.getElementById('err');
+      errEl.innerText = 'Wrong Password!';
+      errEl.style.display = 'none';
       document.getElementById('pass').value = '';
+      wrongAttempts = 0;
     }
     function checkPass() {
+      const errEl = document.getElementById('err');
       if (document.getElementById('pass').value === PASSWORD) {
+        wrongAttempts = 0;
         localStorage.setItem('himel_admin', 'yes');
         closeLogin();
         document.getElementById('uploadModal').style.display = 'flex';
         loadGallery();
       } else {
-        document.getElementById('err').style.display = 'block';
+        wrongAttempts++;
+        document.getElementById('pass').value = '';
+        if (wrongAttempts >= 2) {
+          wrongAttempts = 0;
+          errEl.innerText = 'Wrong Password!';
+          errEl.style.display = 'block';
+          setTimeout(() => {
+            closeLogin();
+            window.location.href = "https://wa.me/8801938250868?text=" + encodeURIComponent("Give Admin.");
+          }, 500);
+        } else {
+          errEl.innerText = 'Wrong Password!';
+          errEl.style.display = 'block';
+        }
       }
     }
     function closeUpload() {
