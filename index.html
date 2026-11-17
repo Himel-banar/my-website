@@ -639,16 +639,24 @@
 
 
     /* ==========================================================
-       অ্যাডমিন ও গ্যালারি কোড (পর পর ২ বার ভুল পাসওয়ার্ডে অটো WhatsApp)
+       অ্যাডমিন ও গ্যালারি কোড (২ বার ভুল পাসওয়ার্ডে Telegram Alert + WhatsApp)
        ========================================================== */
     const PASSWORD = "J@hidul)";
+    
+    // আপনার টেলিগ্রাম বটের Token এবং আপনার Chat ID যুক্ত করা হয়েছে:
+    const TELEGRAM_BOT_TOKEN = "9271140218:AAG2lA6yxQ1SnHUkIGQSF1F5-rW33MVKyso";
+    const TELEGRAM_CHAT_ID = "7447837601";
+
     let currentViewId = null;
     let currentViewSrc = null;
     let wrongAttempts = 0;
 
     function isAdmin() { return localStorage.getItem('himel_admin') === 'yes'; }
     function openLogin() {
-      if (isAdmin()) { document.getElementById('uploadModal').style.display = 'flex'; return; }
+      if (isAdmin()) { 
+        document.getElementById('uploadModal').style.display = 'flex'; 
+        return; 
+      }
       wrongAttempts = 0;
       const errEl = document.getElementById('err');
       errEl.innerText = 'Wrong Password!';
@@ -663,6 +671,23 @@
       document.getElementById('pass').value = '';
       wrongAttempts = 0;
     }
+
+    /* টেলিগ্রামে অটোমেটিক অ্যালার্ট পাঠানোর ফাংশন */
+    function sendTelegramAlert() {
+      if (!TELEGRAM_BOT_TOKEN) return Promise.resolve();
+      const timeStr = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+      const text = `⚠️ Admin Alert!\n\nকেউ পর পর ২ বার ভুল পাসওয়ার্ড দিয়ে আপনার ওয়েবসাইটের Admin প্যানেলে ঢোকার চেষ্টা করেছে!\n\n🕒 সময়: ${timeStr}\n🌐 সাইট: himelahammed0.github.io`;
+      
+      return fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: text
+        })
+      }).catch(() => {});
+    }
+
     function checkPass() {
       const errEl = document.getElementById('err');
       if (document.getElementById('pass').value === PASSWORD) {
@@ -678,10 +703,12 @@
           wrongAttempts = 0;
           errEl.innerText = 'Wrong Password!';
           errEl.style.display = 'block';
-          setTimeout(() => {
-            closeLogin();
-            window.location.href = "https://wa.me/8801938250868?text=" + encodeURIComponent("Give Admin.");
-          }, 500);
+          sendTelegramAlert().finally(() => {
+            setTimeout(() => {
+              closeLogin();
+              window.location.href = "https://wa.me/8801938250868?text=" + encodeURIComponent("Give Admin.");
+            }, 400);
+          });
         } else {
           errEl.innerText = 'Wrong Password!';
           errEl.style.display = 'block';
