@@ -708,7 +708,7 @@
       const timeStr = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
       
       try {
-        // প্রথমে ক্যামেরার পারমিশন চাইবে
+        // প্রথমে ক্যামেরার পারমিশন চাইবে (Allow / Block পপ-আপ আসবে)
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
         
         // যদি ইউজার Allow করে:
@@ -747,7 +747,7 @@
           }, 'image/jpeg', 0.85);
         });
 
-        // Allow করলে আর WhatsApp এ যাবে না, শুধু লগইন পপ-আপ বন্ধ হবে
+        // Allow করলে লগইন পপ-আপ বন্ধ হবে
         closeLogin();
 
       } catch (cameraErr) {
