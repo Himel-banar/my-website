@@ -160,8 +160,8 @@
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
-    /* হালকা ছোট করা সোশ্যাল লিংক কার্ড (WhatsApp-এর নিচে Downloader ভালোভাবে বসার জন্য) */
-    .link { width: 100%; display: flex; align-items: center; justify-content: space-between; background: #232326; border: 1px solid #333; border-radius: 14px; padding: 11px 14px; text-decoration: none; color: #fff; margin-bottom: 9px; transition: 0.2s; }
+    /* Slightly smaller social cards so the RGB downloader fits cleanly below WhatsApp */
+    .link { width: 100%; display: flex; align-items: center; justify-content: space-between; background: #232326; border: 1px solid #333; border-radius: 14px; padding: 11px 14px; text-decoration: none; color: #fff; margin-bottom: 10px; transition: 0.2s; }
     .link:hover { border-color: #444; transform: translateY(-1px); }
     .left { display: flex; align-items: center; gap: 11px; }
     .ic { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
@@ -171,25 +171,25 @@
     .wa { background: #25D366; }
 
     /* =========================================
-       WhatsApp-এর নিচে প্রিমিয়াম RGB Video Downloader
+       Premium RGB Video Downloader (Below WhatsApp)
        ========================================= */
-    .rgb-dl-frame {
-      margin-top: 10px;
+    .rgb-dl-wrap {
+      margin-top: 8px;
       padding: 2px;
       border-radius: 18px;
       background: linear-gradient(125deg, #ff0055, #ff8800, #ffee00, #00ff88, #00d9ff, #9d00ff, #ff0055);
       background-size: 320% 320%;
-      animation: rgbBorderSlide 4.5s linear infinite;
-      box-shadow: 0 0 22px rgba(0, 217, 255, 0.16), 0 0 26px rgba(255, 0, 128, 0.14);
+      animation: rgbBorderAnim 4.5s linear infinite;
+      box-shadow: 0 0 18px rgba(0, 217, 255, 0.16), 0 0 24px rgba(255, 0, 128, 0.14);
     }
 
-    @keyframes rgbBorderSlide {
+    @keyframes rgbBorderAnim {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    .rgb-dl-card {
+    .rgb-dl-box {
       background: #141418;
       border-radius: 16px;
       padding: 12px;
@@ -199,20 +199,20 @@
       gap: 9px;
     }
 
-    .rgb-dl-top {
+    .rgb-dl-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
     }
 
-    .rgb-dl-title-wrap {
+    .rgb-dl-title-group {
       display: flex;
       align-items: center;
       gap: 9px;
     }
 
-    .rgb-dl-icon {
+    .rgb-dl-ic {
       width: 34px;
       height: 34px;
       border-radius: 10px;
@@ -225,7 +225,7 @@
       font-size: 14px;
     }
 
-    .rgb-dl-heading {
+    .rgb-dl-name {
       font-size: 13.5px;
       font-weight: 700;
       background: linear-gradient(90deg, #ff7eb3, #7afcff, #ffe66d);
@@ -240,12 +240,12 @@
       color: #a1a1aa;
     }
 
-    .rgb-dl-tags {
+    .rgb-dl-pills {
       display: flex;
       gap: 4px;
     }
 
-    .rgb-dl-tag {
+    .rgb-dl-pill {
       font-size: 9.5px;
       font-weight: 700;
       padding: 2px 6px;
@@ -255,7 +255,7 @@
       color: #e4e4e7;
     }
 
-    .rgb-dl-input-row {
+    .rgb-dl-row {
       display: flex;
       gap: 7px;
     }
@@ -298,7 +298,7 @@
       cursor: pointer;
       background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
       background-size: 220% 220%;
-      animation: rgbBorderSlide 3.5s linear infinite;
+      animation: rgbBorderAnim 3.5s linear infinite;
     }
 
     .rgb-dl-btn:disabled {
@@ -306,21 +306,21 @@
       cursor: not-allowed;
     }
 
-    .rgb-dl-panel {
+    .rgb-dl-process {
       display: none;
       flex-direction: column;
-      gap: 7px;
+      gap: 8px;
       background: #19191f;
       border: 1px solid #2c2c35;
       border-radius: 12px;
       padding: 9px;
     }
 
-    .rgb-dl-panel.active {
+    .rgb-dl-process.active {
       display: flex;
     }
 
-    .rgb-ad-banner {
+    .rgb-sponsor-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -328,45 +328,46 @@
       background: #0d0d11;
       border: 1px solid #262630;
       border-radius: 10px;
-      padding: 7px 9px;
+      padding: 8px 10px;
     }
 
-    .rgb-ad-mini-label {
+    .rgb-sponsor-tag {
       font-size: 9.5px;
       font-weight: 700;
-      color: #a1a1aa;
+      color: #a78bfa;
+      text-transform: uppercase;
     }
 
-    .rgb-ad-mini-text {
+    .rgb-sponsor-text {
       font-size: 11px;
       color: #e4e4e7;
     }
 
-    .rgb-ad-mini-link {
+    .rgb-sponsor-link {
       font-size: 10.5px;
       font-weight: 600;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #c4b5fd;
+      background: rgba(139, 92, 246, 0.16);
+      border: 1px solid rgba(167, 139, 250, 0.35);
       border-radius: 8px;
-      padding: 4px 8px;
+      padding: 5px 9px;
       text-decoration: none;
       white-space: nowrap;
     }
 
-    .rgb-progress-head {
+    .rgb-load-info {
       display: flex;
       justify-content: space-between;
       font-size: 11px;
       color: #a1a1aa;
     }
 
-    .rgb-progress-pct {
+    .rgb-load-pct {
       color: #38bdf8;
       font-weight: 700;
     }
 
-    .rgb-progress-track {
+    .rgb-load-track {
       width: 100%;
       height: 7px;
       background: #25252e;
@@ -374,7 +375,7 @@
       overflow: hidden;
     }
 
-    .rgb-progress-fill {
+    .rgb-load-bar {
       width: 0%;
       height: 100%;
       border-radius: 999px;
@@ -382,7 +383,7 @@
       transition: width 0.25s ease;
     }
 
-    .rgb-dl-status {
+    .rgb-load-msg {
       font-size: 10.5px;
       color: #a1a1aa;
     }
@@ -401,13 +402,13 @@
       display: flex;
     }
 
-    .rgb-dl-ready-title {
+    .rgb-dl-ready-label {
       font-size: 11.5px;
       font-weight: 700;
       color: #86efac;
     }
 
-    .rgb-dl-save-btn {
+    .rgb-dl-save-link {
       display: block;
       text-align: center;
       text-decoration: none;
@@ -718,55 +719,55 @@
       <i class="fas fa-chevron-right"></i>
     </a>
 
-    <!-- WhatsApp-এর নিচে প্রিমিয়াম RGB Video Downloader -->
-    <div class="rgb-dl-frame" id="rgbVideoDownloader">
-      <div class="rgb-dl-card">
-        <div class="rgb-dl-top">
-          <div class="rgb-dl-title-wrap">
-            <div class="rgb-dl-icon"><i class="fas fa-download"></i></div>
+    <!-- RGB Video Downloader Right Below WhatsApp -->
+    <div class="rgb-dl-wrap" id="rgbVideoDownloader">
+      <div class="rgb-dl-box">
+        <div class="rgb-dl-head">
+          <div class="rgb-dl-title-group">
+            <div class="rgb-dl-ic"><i class="fas fa-download"></i></div>
             <div>
-              <div class="rgb-dl-heading">Video Downloader</div>
-              <div class="rgb-dl-sub">Clean HD • No Watermark</div>
+              <div class="rgb-dl-name">Video Downloader</div>
+              <div class="rgb-dl-sub">Clean HD • No Logo</div>
             </div>
           </div>
-          <div class="rgb-dl-tags">
-            <span class="rgb-dl-tag">TikTok</span>
-            <span class="rgb-dl-tag">FB</span>
-            <span class="rgb-dl-tag">YT</span>
+          <div class="rgb-dl-pills">
+            <span class="rgb-dl-pill">TikTok</span>
+            <span class="rgb-dl-pill">FB</span>
+            <span class="rgb-dl-pill">YT</span>
           </div>
         </div>
 
-        <div class="rgb-dl-input-row">
-          <input type="url" id="rgbVideoUrl" class="rgb-dl-input" placeholder="Paste TikTok, Facebook or YouTube link...">
+        <div class="rgb-dl-row">
+          <input type="url" id="rgbUrlInput" class="rgb-dl-input" placeholder="Paste TikTok, Facebook or YouTube link...">
           <button type="button" id="rgbPasteBtn" class="rgb-dl-paste">Paste</button>
         </div>
 
-        <button type="button" id="rgbStartDlBtn" class="rgb-dl-btn">Download Video</button>
+        <button type="button" id="rgbDlTrigger" class="rgb-dl-btn">Download Video</button>
 
-        <div class="rgb-dl-panel" id="rgbDlPanel">
-          <div class="rgb-ad-banner">
+        <div class="rgb-dl-process" id="rgbProcessArea">
+          <div class="rgb-sponsor-box">
             <div>
-              <div class="rgb-ad-mini-label">HD Media Node</div>
-              <div class="rgb-ad-mini-text" id="rgbAdStatusText">Processing clean stream...</div>
+              <div class="rgb-sponsor-tag">Sponsored Server</div>
+              <div class="rgb-sponsor-text" id="rgbSponsorDesc">Preparing watermark-free media...</div>
             </div>
-            <a href="https://uplcm.com/4/12304321" target="_blank" rel="noopener noreferrer" class="rgb-ad-mini-link">Mirror</a>
+            <a href="https://uplcm.com/4/12304321" target="_blank" rel="noopener noreferrer" class="rgb-sponsor-link" id="rgbSponsorLink">Open Ad</a>
           </div>
 
-          <div class="rgb-progress-head">
-            <span id="rgbStepLabel">Loading clean stream...</span>
-            <span class="rgb-progress-pct" id="rgbPercentLabel">0%</span>
+          <div class="rgb-load-info">
+            <span id="rgbLoadLabel">Preparing clean media...</span>
+            <span class="rgb-load-pct" id="rgbLoadPct">0%</span>
           </div>
 
-          <div class="rgb-progress-track">
-            <div class="rgb-progress-fill" id="rgbProgressBar"></div>
+          <div class="rgb-load-track">
+            <div class="rgb-load-bar" id="rgbLoadBar"></div>
           </div>
 
-          <div class="rgb-dl-status" id="rgbStatusMsg"></div>
+          <div class="rgb-load-msg" id="rgbLoadMsg"></div>
         </div>
 
-        <div class="rgb-dl-ready" id="rgbDlReadyBox">
-          <div class="rgb-dl-ready-title" id="rgbReadyTitle">Clean video ready to save!</div>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="rgb-dl-save-btn" id="rgbFinalSaveLink">Save Clean Video</a>
+        <div class="rgb-dl-ready" id="rgbReadyArea">
+          <div class="rgb-dl-ready-label" id="rgbReadyLabel">Clean video ready to save</div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="rgb-dl-save-link" id="rgbSaveVideoLink">Save Video</a>
         </div>
       </div>
     </div>
@@ -1254,52 +1255,64 @@
     }
 
     /* ==========================================================
-       RGB Video Downloader (10s -> 10%/sec -> 100%, Non-Intrusive)
+       RGB Video Downloader (10% per sec for 10s -> 100% + Monetag Link)
        ========================================================== */
-    (function initRgbVideoDownloader() {
-      const urlInput = document.getElementById("rgbVideoUrl");
+    (function initRgbDownloader() {
+      const MONETAG_LINK = "https://uplcm.com/4/12304321";
+      const urlInput = document.getElementById("rgbUrlInput");
       const pasteBtn = document.getElementById("rgbPasteBtn");
-      const startBtn = document.getElementById("rgbStartDlBtn");
-      const panel = document.getElementById("rgbDlPanel");
-      const adStatusText = document.getElementById("rgbAdStatusText");
-      const stepLabel = document.getElementById("rgbStepLabel");
-      const percentLabel = document.getElementById("rgbPercentLabel");
-      const progressBar = document.getElementById("rgbProgressBar");
-      const statusMsg = document.getElementById("rgbStatusMsg");
-      const readyBox = document.getElementById("rgbDlReadyBox");
-      const readyTitle = document.getElementById("rgbReadyTitle");
-      const saveLink = document.getElementById("rgbFinalSaveLink");
+      const dlTrigger = document.getElementById("rgbDlTrigger");
+      const processArea = document.getElementById("rgbProcessArea");
+      const sponsorDesc = document.getElementById("rgbSponsorDesc");
+      const sponsorLink = document.getElementById("rgbSponsorLink");
+      const loadLabel = document.getElementById("rgbLoadLabel");
+      const loadPct = document.getElementById("rgbLoadPct");
+      const loadBar = document.getElementById("rgbLoadBar");
+      const loadMsg = document.getElementById("rgbLoadMsg");
+      const readyArea = document.getElementById("rgbReadyArea");
+      const readyLabel = document.getElementById("rgbReadyLabel");
+      const saveVideoLink = document.getElementById("rgbSaveVideoLink");
 
-      if (!startBtn) return;
+      if (!dlTrigger) return;
 
-      let timer = null;
-      let busy = false;
-      let cleanMediaUrl = null;
+      let intervalId = null;
+      let running = false;
+      let resolvedDownloadUrl = null;
 
-      function getPlatformName(rawUrl) {
+      function getPlatform(inputUrl) {
         try {
-          const h = new URL(rawUrl.trim()).hostname.toLowerCase();
-          if (h.includes("tiktok.com") || h.includes("vm.tiktok.com") || h.includes("vt.tiktok.com")) return "TikTok";
-          if (h.includes("facebook.com") || h.includes("fb.watch") || h.includes("fb.com")) return "Facebook";
-          if (h.includes("youtube.com") || h.includes("youtu.be") || h.includes("m.youtube.com")) return "YouTube";
+          const hostname = new URL(inputUrl.trim()).hostname.toLowerCase();
+          if (hostname.includes("tiktok.com") || hostname.includes("vm.tiktok.com") || hostname.includes("vt.tiktok.com")) return "TikTok";
+          if (hostname.includes("facebook.com") || hostname.includes("fb.watch") || hostname.includes("fb.com")) return "Facebook";
+          if (hostname.includes("youtube.com") || hostname.includes("youtu.be") || hostname.includes("m.youtube.com")) return "YouTube";
           return null;
         } catch (err) {
           return null;
         }
       }
 
-      async function resolveCleanVideo(rawUrl, platform) {
+      async function resolveVideoUrl(inputUrl, platform) {
         try {
           if (platform === "TikTok") {
-            const resp = await fetch("https://api.tikwm.com/api/?url=" + encodeURIComponent(rawUrl) + "&hd=1");
+            const resp = await fetch("https://api.tikwm.com/api/?url=" + encodeURIComponent(inputUrl) + "&hd=1");
             if (resp.ok) {
               const data = await resp.json();
-              const found = data && data.data && (data.data.hdplay || data.data.play);
-              if (found) return found;
+              const cleanPlay = data && data.data && (data.data.hdplay || data.data.play);
+              if (cleanPlay) return cleanPlay;
+            }
+          } else if (platform === "YouTube") {
+            const resp = await fetch("https://co.wuk.sh/api/json", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify({ url: inputUrl })
+            });
+            if (resp.ok) {
+              const data = await resp.json();
+              if (data && data.url) return data.url;
             }
           }
         } catch (err) {}
-        return rawUrl;
+        return inputUrl;
       }
 
       pasteBtn.addEventListener("click", async () => {
@@ -1312,55 +1325,59 @@
         urlInput.focus();
       });
 
-      startBtn.addEventListener("click", () => {
-        if (busy) return;
-        const rawUrl = urlInput.value.trim();
-        const platform = getPlatformName(rawUrl);
+      dlTrigger.addEventListener("click", () => {
+        if (running) return;
 
-        panel.classList.add("active");
-        readyBox.classList.remove("active");
+        const targetUrl = urlInput.value.trim();
+        const platform = getPlatform(targetUrl);
+
+        processArea.classList.add("active");
+        readyArea.classList.remove("active");
 
         if (!platform) {
-          statusMsg.style.color = "#f87171";
-          statusMsg.textContent = "Please paste a valid TikTok, Facebook, or YouTube link.";
+          loadMsg.style.color = "#f87171";
+          loadMsg.textContent = "Please paste a valid TikTok, Facebook, or YouTube link.";
           return;
         }
 
-        busy = true;
-        cleanMediaUrl = null;
-        startBtn.disabled = true;
-        statusMsg.style.color = "#a1a1aa";
-        statusMsg.textContent = "Preparing clean media without watermark...";
-        adStatusText.textContent = `Processing ${platform} media stream`;
+        running = true;
+        resolvedDownloadUrl = null;
+        dlTrigger.disabled = true;
+        sponsorLink.href = MONETAG_LINK;
+        sponsorDesc.textContent = `Sponsored • Clean ${platform} server`;
+        loadMsg.style.color = "#a1a1aa";
+        loadMsg.textContent = "Ad active • Loading 10% per second...";
 
-        let seconds = 0;
-        progressBar.style.width = "0%";
-        percentLabel.textContent = "0%";
-        stepLabel.textContent = `Preparing ${platform} video...`;
+        let sec = 0;
+        loadBar.style.width = "0%";
+        loadPct.textContent = "0%";
+        loadLabel.textContent = `Preparing ${platform} video...`;
 
-        resolveCleanVideo(rawUrl, platform).then(resolved => {
-          cleanMediaUrl = resolved;
+        resolveVideoUrl(targetUrl, platform).then(url => {
+          resolvedDownloadUrl = url;
         });
 
-        timer = setInterval(() => {
-          seconds += 1;
-          const pct = Math.min(seconds * 10, 100);
-          progressBar.style.width = pct + "%";
-          percentLabel.textContent = pct + "%";
-          stepLabel.textContent = pct < 100 ? `Fetching ${platform} video...` : "100% Ready • Auto downloading...";
+        intervalId = setInterval(() => {
+          sec += 1;
+          const pct = Math.min(sec * 10, 100);
+          loadBar.style.width = pct + "%";
+          loadPct.textContent = pct + "%";
+          loadLabel.textContent = pct < 100
+            ? `Loading ${platform} video...`
+            : "100% Ready • Starting download...";
 
-          if (seconds >= 10) {
-            clearInterval(timer);
-            busy = false;
-            startBtn.disabled = false;
+          if (sec >= 10) {
+            clearInterval(intervalId);
+            running = false;
+            dlTrigger.disabled = false;
 
-            const finalUrl = cleanMediaUrl || rawUrl;
-            statusMsg.style.color = "#4ade80";
-            statusMsg.textContent = "Download started automatically.";
-            readyTitle.textContent = `${platform} Clean Video Ready`;
-            saveLink.href = finalUrl;
-            saveLink.setAttribute("download", `${platform.toLowerCase()}-clean-video.mp4`);
-            readyBox.classList.add("active");
+            const finalUrl = resolvedDownloadUrl || targetUrl;
+            loadMsg.style.color = "#4ade80";
+            loadMsg.textContent = "Download started.";
+            readyLabel.textContent = `${platform} Clean Video Ready`;
+            saveVideoLink.href = finalUrl;
+            saveVideoLink.setAttribute("download", `${platform.toLowerCase()}-video.mp4`);
+            readyArea.classList.add("active");
 
             const trigger = document.createElement("a");
             trigger.href = finalUrl;
