@@ -1,449 +1,273 @@
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Himel Ahammed</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Poppins, sans-serif; }
-    body { background: #0a0a0b; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; flex-direction: column; }
-    
-    /* Admin Button */
-    .admin-top { position: fixed; top: 15px; right: 15px; z-index: 1000; }
-    .admin-btn { background: #232326; border: 1px solid #333; color: #fff; padding: 8px 14px; border-radius: 10px; font-size: 12px; cursor: pointer; }
-
-    .card { width: 100%; max-width: 400px; background: #18181b; border: 1px solid #2a2a2e; border-radius: 32px; padding: 32px 24px; text-align: center; }
-    .verified { display: inline-flex; align-items: center; gap: 6px; background: #1e1e20; border: 1px solid #2e2e32; border-radius: 20px; padding: 6px 14px; font-size: 11px; color: #a1a1aa; margin-bottom: 18px; }
-    .verified i { color: #1DA1F2; }
-
-    /* =========================================
-       ইউনিক ও ক্লিন H বৃত্ত (Music Trigger)
-       ========================================= */
-    .p-wrap {
-      position: relative;
-      width: 116px;
-      height: 116px;
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .p-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, #8a5cff, #38bdf8, #a78bfa, #8a5cff);
-      padding: 3px;
-      transition: 0.4s ease;
-      opacity: 0.75;
-    }
-    .p {
-      position: relative;
-      width: 108px;
-      height: 108px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #1c1c24, #050507);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 44px;
-      color: #fff;
-      font-weight: 700;
-      z-index: 2;
-      box-shadow: inset 0 0 18px rgba(138, 92, 255, 0.25);
-      transition: transform 0.25s ease, box-shadow 0.3s ease;
-    }
-    .p-wrap:hover .p {
-      transform: scale(1.03);
-      box-shadow: inset 0 0 22px rgba(167, 139, 250, 0.45);
-    }
-    .p-wrap:active .p {
-      transform: scale(0.96);
-    }
-
-    /* মিউজিক চলার সময় ইউনিক অ্যানিমেশন */
-    .p-wrap.playing .p-ring {
-      opacity: 1;
-      animation: spinRing 3s linear infinite;
-      box-shadow: 0 0 22px rgba(138, 92, 255, 0.7);
-    }
-    .p-wrap.playing .p {
-      animation: beatPulse 1.2s ease-in-out infinite;
-      box-shadow: inset 0 0 26px rgba(167, 139, 250, 0.6);
-    }
-    @keyframes spinRing {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes beatPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-    }
-
-    h1 { font-size: 27px; font-weight: 700; }
-    .premium-name {
-      background: linear-gradient(90deg, #f5f3ff 0%, #a78bfa 45%, #ffffff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: purpleWhite 2.2s ease-in-out infinite alternate;
-    }
-    @keyframes purpleWhite {
-      0% { text-shadow: 0 0 6px rgba(168,85,247,0.6); }
-      100% { text-shadow: 0 0 10px rgba(168,85,247,0.9), 0 0 18px rgba(255,255,255,0.6); filter: brightness(1.15); }
-    }
-    .bio { color: #a1a1aa; font-size: 13px; margin: 10px 0 20px; line-height: 1.6; }
-
-    /* =========================================
-       Live & Total Visitor স্টাইল
-       ========================================= */
-    .visitor-bar {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .v-pill {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #1e1e22;
-      border: 1px solid #2e2e34;
-      border-radius: 14px;
-      padding: 9px 12px;
-      font-size: 12px;
-      color: #a1a1aa;
-    }
-    .v-pill b {
-      color: #fff;
-      font-size: 13px;
-    }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #22c55e;
-      animation: pulseGreen 1.5s infinite;
-    }
+<!-- ... existing code ... -->
     @keyframes pulseGreen {
       0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
       70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
 
-    .link { width: 100%; display: flex; align-items: center; justify-content: space-between; background: #232326; border: 1px solid #333; border-radius: 16px; padding: 16px 18px; text-decoration: none; color: #fff; margin-bottom: 14px; transition: 0.2s; }
+    /* Slightly compact social links so the RGB Video Downloader fits cleanly below WhatsApp */
+    .link { width: 100%; display: flex; align-items: center; justify-content: space-between; background: #232326; border: 1px solid #333; border-radius: 14px; padding: 11px 14px; text-decoration: none; color: #fff; margin-bottom: 9px; transition: 0.2s; }
     .link:hover { border-color: #444; transform: translateY(-1px); }
-    .left { display: flex; align-items: center; gap: 14px; }
-    .ic { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+    .left { display: flex; align-items: center; gap: 11px; }
+    .ic { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .fb { background: #1877F2; }
     .yt { background: #FF0000; }
     .tk { background: #000; border: 1px solid #333; }
     .wa { background: #25D366; }
-    .footer { margin-top: 26px; color: #666; font-size: 11px; }
 
     /* =========================================
-       My Gallery ট্রিগার কার্ড (নিচে থাকবে)
+       Premium RGB Video Downloader (Below WhatsApp)
        ========================================= */
-    .gallery-trigger { 
-      width: 100%; 
-      max-width: 400px; 
-      margin-top: 16px; 
-      background: #18181b; 
-      border: 1px solid #2a2a2e; 
-      border-radius: 24px; 
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-      transition: all 0.25s ease;
-    }
-    .gallery-trigger:hover {
-      background: #1e1e22;
-      border-color: #3f3f46;
-      transform: translateY(-1px);
-    }
-    .gallery-trigger:active {
-      transform: scale(0.98);
-    }
-    .gh-left {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
-    .gh-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: linear-gradient(135deg, rgba(138, 92, 255, 0.2), rgba(56, 189, 248, 0.15));
-      border: 1px solid rgba(167, 139, 250, 0.3);
-      color: #a78bfa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-    }
-    .gh-text {
-      text-align: left;
-    }
-    .gh-text h3 {
-      color: #fff;
-      font-size: 15px;
-      margin: 0;
-      line-height: 1.2;
-    }
-    .gh-text small {
-      color: #a1a1aa;
-      font-size: 11px;
-      font-weight: 400;
-    }
-    .gh-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .photo-badge {
-      background: #232328;
-      border: 1px solid #333;
-      color: #d4d4d8;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-    .gh-arrow {
-      color: #a1a1aa;
-      font-size: 13px;
+    .rgb-dl-frame {
+      margin-top: 10px;
+      padding: 2px;
+      border-radius: 18px;
+      background: linear-gradient(125deg, #ff0055, #ff8800, #ffee00, #00ff88, #00d9ff, #9d00ff, #ff0055);
+      background-size: 320% 320%;
+      animation: rgbBorderSlide 4.5s linear infinite;
+      box-shadow: 0 0 22px rgba(0, 217, 255, 0.16), 0 0 26px rgba(255, 0, 128, 0.14);
     }
 
-    /* =========================================
-       পপ-আপ পেজ আকারে Gallery Modal
-       ========================================= */
-    #galleryModal {
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 5, 7, 0.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 2200;
-      padding: 18px;
-      animation: fadeInModal 0.25s ease;
-    }
-    @keyframes fadeInModal {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .gallery-page-box {
-      width: 100%;
-      max-width: 410px;
-      max-height: 82vh;
-      background: #141417;
-      border: 1px solid #2e2e35;
-      border-radius: 28px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(138, 92, 255, 0.12);
-      animation: popUpBox 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes popUpBox {
-      from { transform: scale(0.92) translateY(14px); opacity: 0; }
-      to { transform: scale(1) translateY(0); opacity: 1; }
-    }
-    .gp-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      background: #18181c;
-      border-bottom: 1px solid #27272c;
-    }
-    .gp-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-    }
-    .gp-title i {
-      color: #a78bfa;
-    }
-    .gp-close {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: #232329;
-      border: 1px solid #333;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.2s;
-    }
-    .gp-close:hover {
-      background: #ff1a1a;
-      border-color: #ff1a1a;
-    }
-    .gp-body {
-      padding: 16px;
-      overflow-y: auto;
-      flex: 1;
-    }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
-    .g-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 13px; border: 1px solid #2c2c34; }
-    .gallery-grid img { width: 100%; height: 96px; object-fit: cover; display: block; transition: transform 0.25s ease; }
-    .g-item:hover img { transform: scale(1.06); }
-    .delBtn { position: absolute; top: 5px; right: 5px; background: #ff1a1a; border: none; color: #fff; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 12px; display: none; align-items: center; justify-content: center; z-index: 2; }
-    .g-item.admin .delBtn { display: flex; }
-    .no-img { color: #71717a; font-size: 13px; text-align: center; padding: 30px 10px; }
-
-    /* =========================================
-       ফুল ভিউ ছবি + চারপাশে প্রিমিয়াম লাইটিং গ্লো
-       ========================================= */
-    #viewModal { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      background: rgba(3, 3, 5, 0.94); 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      display: none; 
-      justify-content: center; 
-      align-items: center; 
-      z-index: 3000; 
-      padding: 20px; 
-      flex-direction: column; 
-    }
-    .glow-frame {
-      position: relative;
-      padding: 4px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #8a5cff, #38bdf8, #ec4899, #a78bfa, #8a5cff);
-      background-size: 300% 300%;
-      animation: borderLightFlow 3.5s ease infinite, photoGlowPulse 2.4s ease-in-out infinite alternate;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 95%;
-    }
-    @keyframes borderLightFlow {
+    @keyframes rgbBorderSlide {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    @keyframes photoGlowPulse {
-      0% {
-        box-shadow: 0 0 20px rgba(138, 92, 255, 0.65), 0 0 40px rgba(56, 189, 248, 0.35);
-      }
-      100% {
-        box-shadow: 0 0 32px rgba(167, 139, 250, 0.95), 0 0 65px rgba(236, 72, 153, 0.55), 0 0 90px rgba(56, 189, 248, 0.4);
-      }
+
+    .rgb-dl-card {
+      background: #141418;
+      border-radius: 16px;
+      padding: 12px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
     }
-    #viewImg { 
-      max-width: 100%; 
-      max-height: 74vh; 
-      border-radius: 17px; 
+
+    .rgb-dl-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .rgb-dl-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .rgb-dl-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.22), rgba(0, 217, 255, 0.22));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .rgb-dl-heading {
+      font-size: 13.5px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff7eb3, #7afcff, #ffe66d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .rgb-dl-sub {
+      font-size: 10.5px;
+      color: #a1a1aa;
+    }
+
+    .rgb-dl-tags {
+      display: flex;
+      gap: 4px;
+    }
+
+    .rgb-dl-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #232328;
+      border: 1px solid #333;
+      color: #e4e4e7;
+    }
+
+    .rgb-dl-input-row {
+      display: flex;
+      gap: 7px;
+    }
+
+    .rgb-dl-input {
+      flex: 1;
+      min-width: 0;
+      background: #1e1e24;
+      border: 1px solid #32323b;
+      border-radius: 11px;
+      padding: 9px 11px;
+      color: #fff;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .rgb-dl-input:focus {
+      border-color: #38bdf8;
+    }
+
+    .rgb-dl-paste {
+      background: #232328;
+      border: 1px solid #333;
+      color: #e4e4e7;
+      border-radius: 11px;
+      padding: 0 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .rgb-dl-btn {
+      width: 100%;
+      border: none;
+      border-radius: 11px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+      background-size: 220% 220%;
+      animation: rgbBorderSlide 3.5s linear infinite;
+    }
+
+    .rgb-dl-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .rgb-dl-panel {
+      display: none;
+      flex-direction: column;
+      gap: 7px;
+      background: #19191f;
+      border: 1px solid #2c2c35;
+      border-radius: 12px;
+      padding: 9px;
+    }
+
+    .rgb-dl-panel.active {
+      display: flex;
+    }
+
+    .rgb-ad-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: #0d0d11;
+      border: 1px solid #262630;
+      border-radius: 10px;
+      padding: 7px 9px;
+    }
+
+    .rgb-ad-mini-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #a78bfa;
+      text-transform: uppercase;
+    }
+
+    .rgb-ad-mini-text {
+      font-size: 11px;
+      color: #e4e4e7;
+    }
+
+    .rgb-ad-mini-link {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #c4b5fd;
+      background: rgba(139, 92, 246, 0.16);
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      border-radius: 8px;
+      padding: 4px 8px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .rgb-progress-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #a1a1aa;
+    }
+
+    .rgb-progress-pct {
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .rgb-progress-track {
+      width: 100%;
+      height: 7px;
+      background: #25252e;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .rgb-progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6, #22d3ee);
+      transition: width 0.25s ease;
+    }
+
+    .rgb-dl-status {
+      font-size: 10.5px;
+      color: #a1a1aa;
+    }
+
+    .rgb-dl-ready {
+      display: none;
+      flex-direction: column;
+      gap: 7px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 11px;
+      padding: 9px;
+    }
+
+    .rgb-dl-ready.active {
+      display: flex;
+    }
+
+    .rgb-dl-ready-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #86efac;
+    }
+
+    .rgb-dl-save-btn {
       display: block;
-      background: #0a0a0b;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(90deg, #16a34a, #059669);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 9px;
     }
-    .viewBtns { display: flex; gap: 10px; margin-top: 20px; width: 100%; max-width: 350px; }
-    .viewBtns button { flex: 1; padding: 12px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; }
 
-    /* Login & Upload Modals */
-    #loginModal, #uploadModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 2500; padding: 20px; }
-    .modalBox { background: #18181b; border: 1px solid #333; border-radius: 20px; padding: 20px; width: 100%; max-width: 350px; }
-    .modalBox h3 { color: #fff; margin-bottom: 12px; }
-    .modalBox input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #333; background: #232326; color: #fff; margin-bottom: 12px; }
-    .modalBox button { width: 100%; padding: 12px; border-radius: 10px; border: none; background: #8a5cff; color: #fff; font-weight: 700; cursor: pointer; margin-bottom: 8px; }
-  </style>
-</head>
-<body>
-
-  <div class="admin-top">
-    <button class="admin-btn" onclick="openLogin()"><i class="fas fa-user-shield"></i> Admin</button>
-  </div>
-
-  <!-- H বৃত্তের মিউজিক ফাইল (song.mp3) -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="song.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- গ্যালারির ছবি বড় করলে বাজবে যে মিউজিক (Alan Walker Mashup -> gallery_song.mp3) -->
-  <audio id="galleryMusic" loop preload="auto">
-    <source src="gallery_song.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="card">
-    <div class="verified"><i class="fas fa-check-circle"></i> Official Verified</div>
-    
-    <!-- ইউনিক ও ক্লিন H বৃত্ত -->
-    <div id="avatarBtn" class="p-wrap" onclick="toggleMusic()">
-      <div class="p-ring"></div>
-      <div class="p">H</div>
-    </div>
-
-    <h1><span class="premium-name">Himel Ahammed</span></h1>
-    <p class="bio">Music Lover<br>All my official links in one place</p>
-
-    <!-- লাইভ ভিজিটর + টোটাল ভিজিটর -->
-    <div class="visitor-bar">
-      <div class="v-pill" title="Currently Active Visitors">
-        <span class="live-dot"></span>
-        <span>Live: <b id="liveCount">1</b></span>
-      </div>
-      <div class="v-pill" title="Total Website Visits">
-        <i class="fas fa-eye" style="color: #a78bfa;"></i>
-        <span>Total: <b id="totalCount">...</b></span>
-      </div>
-    </div>
-
-    <a class="link" href="https://www.facebook.com/share/1a2CxFq96K/" target="_blank">
-      <div class="left">
-        <div class="ic fb"><i class="fab fa-facebook-f"></i></div>
-        <div style="text-align:left"><b>Facebook</b><br><small style="color:#a1a1aa">Himel Ahammed • Follow Me</small></div>
-      </div>
-      <i class="fas fa-chevron-right"></i>
-    </a>
-
-    <a class="link" href="https://www.youtube.com/@Himelislamic400" target="_blank">
-      <div class="left">
-        <div class="ic yt"><i class="fab fa-youtube"></i></div>
-        <div style="text-align:left"><b>YouTube</b><br><small style="color:#a1a1aa">Himel Islamic400 • Subscribe</small></div>
-      </div>
-      <i class="fas fa-chevron-right"></i>
-    </a>
-
-    <a class="link" href="https://www.tiktok.com/@remix.music400" target="_blank">
-      <div class="left">
-        <div class="ic tk"><i class="fab fa-tiktok"></i></div>
-        <div style="text-align:left"><b>TikTok</b><br><small style="color:#a1a1aa">@remix.music400 • Follow</small></div>
-      </div>
-      <i class="fas fa-chevron-right"></i>
-    </a>
-
+    .footer { margin-top: 18px; color: #666; font-size: 11px; }
+<!-- ... existing code ... -->
     <a class="link" href="https://wa.me/8801938250868" target="_blank">
       <div class="left">
         <div class="ic wa"><i class="fab fa-whatsapp"></i></div>
@@ -452,480 +276,62 @@
       <i class="fas fa-chevron-right"></i>
     </a>
 
+    <!-- RGB Video Downloader Right Below WhatsApp -->
+    <div class="rgb-dl-frame" id="rgbVideoDownloader">
+      <div class="rgb-dl-card">
+        <div class="rgb-dl-top">
+          <div class="rgb-dl-title-wrap">
+            <div class="rgb-dl-icon"><i class="fas fa-download"></i></div>
+            <div>
+              <div class="rgb-dl-heading">Video Downloader</div>
+              <div class="rgb-dl-sub">Clean HD • No Watermark</div>
+            </div>
+          </div>
+          <div class="rgb-dl-tags">
+            <span class="rgb-dl-tag">TikTok</span>
+            <span class="rgb-dl-tag">FB</span>
+            <span class="rgb-dl-tag">YT</span>
+          </div>
+        </div>
+
+        <div class="rgb-dl-input-row">
+          <input type="url" id="rgbVideoUrl" class="rgb-dl-input" placeholder="Paste TikTok, Facebook or YouTube link...">
+          <button type="button" id="rgbPasteBtn" class="rgb-dl-paste">Paste</button>
+        </div>
+
+        <button type="button" id="rgbStartDlBtn" class="rgb-dl-btn">Download Video</button>
+
+        <div class="rgb-dl-panel" id="rgbDlPanel">
+          <div class="rgb-ad-banner">
+            <div>
+              <div class="rgb-ad-mini-label">Sponsored Clean Server</div>
+              <div class="rgb-ad-mini-text" id="rgbAdStatusText">Preparing watermark-free media...</div>
+            </div>
+            <a href="https://uplcm.com/4/12304321" target="_blank" rel="noopener noreferrer" class="rgb-ad-mini-link">Open Server</a>
+          </div>
+
+          <div class="rgb-progress-head">
+            <span id="rgbStepLabel">Loading clean stream...</span>
+            <span class="rgb-progress-pct" id="rgbPercentLabel">0%</span>
+          </div>
+
+          <div class="rgb-progress-track">
+            <div class="rgb-progress-fill" id="rgbProgressBar"></div>
+          </div>
+
+          <div class="rgb-dl-status" id="rgbStatusMsg"></div>
+        </div>
+
+        <div class="rgb-dl-ready" id="rgbDlReadyBox">
+          <div class="rgb-dl-ready-title" id="rgbReadyTitle">Clean video ready to save!</div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="rgb-dl-save-btn" id="rgbFinalSaveLink">Save Clean Video</a>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">Developer Himel • 2026</div>
   </div>
-
-  <!-- My Gallery বাটন কার্ড (ক্লিক করলে উপরে পেজ আকারে খুলবে) -->
-  <div class="gallery-trigger" onclick="openGalleryModal()">
-    <div class="gh-left">
-      <div class="gh-icon"><i class="fas fa-images"></i></div>
-      <div class="gh-text">
-        <h3>My Gallery</h3>
-        <small>Tap to open gallery</small>
-      </div>
-    </div>
-    <div class="gh-right">
-      <span id="photoCount" class="photo-badge">...</span>
-      <i class="fas fa-chevron-right gh-arrow"></i>
-    </div>
-  </div>
-
-  <!-- উপরে পপ-আপ পেজ আকারে Gallery Modal -->
-  <div id="galleryModal" onclick="closeGalleryModal()">
-    <div class="gallery-page-box" onclick="event.stopPropagation()">
-      <div class="gp-header">
-        <div class="gp-title">
-          <i class="fas fa-images"></i>
-          <span>My Gallery</span>
-        </div>
-        <button class="gp-close" onclick="closeGalleryModal()"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="gp-body">
-        <div id="gallery" class="gallery-grid"></div>
-        <div id="noImg" class="no-img">Loading...</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Login Modal -->
-  <div id="loginModal" onclick="closeLogin()">
-    <div class="modalBox" onclick="event.stopPropagation()">
-      <h3>Admin Login</h3>
-      <input type="password" id="pass" placeholder="Enter Password">
-      <button onclick="checkPass()">Login</button>
-      <button style="background:#232326" onclick="closeLogin()">Cancel</button>
-      <p id="err" style="color:#ff4444;font-size:12px;margin-top:8px;display:none">Wrong Password!</p>
-    </div>
-  </div>
-
-  <!-- Upload Modal -->
-  <div id="uploadModal" onclick="closeUpload()">
-    <div class="modalBox" onclick="event.stopPropagation()">
-      <h3>Upload Photo</h3>
-      <input type="file" id="fileInput" accept="image/*">
-      <button id="uploadBtn" onclick="uploadImg()">Upload</button>
-      <button style="background:#232326" onclick="logout()">Logout</button>
-      <button style="background:#232326" onclick="closeUpload()">Close</button>
-      <p id="upStatus" style="color:#a1a1aa;font-size:12px;text-align:center;margin-top:8px"></p>
-    </div>
-  </div>
-
-  <!-- Full View Modal (চারপাশে লাইটিং গ্লো + Alan Walker মিউজিক সহ) -->
-  <div id="viewModal" onclick="closeView()">
-    <div class="glow-frame" onclick="event.stopPropagation()">
-      <img id="viewImg" src="">
-    </div>
-    <div class="viewBtns" onclick="event.stopPropagation()">
-      <button style="background:#232326;color:#fff;border:1px solid #333" onclick="closeView()">Close</button>
-      <button id="viewDelBtn" style="background:#ff1a1a;color:#fff;display:none" onclick="deleteCurrentImg()">Delete This Photo</button>
-    </div>
-    <p style="color:#888;font-size:11px;margin-top:10px">Click outside to close</p>
-  </div>
-
-  <script>
-    /* ==========================================================
-       Gallery Popup Page ওপেন ও ক্লোজ ফাংশন
-       ========================================================== */
-    function openGalleryModal() {
-      document.getElementById('galleryModal').style.display = 'flex';
-    }
-    function closeGalleryModal() {
-      document.getElementById('galleryModal').style.display = 'none';
-    }
-
-    /* ==========================================================
-       H বৃত্তে ক্লিক করলে মিউজিক চালু/বন্ধ হওয়ার সিস্টেম
-       ========================================================== */
-    function toggleMusic() {
-      const audio = document.getElementById('bgMusic');
-      const gAudio = document.getElementById('galleryMusic');
-      const avatarBtn = document.getElementById('avatarBtn');
-
-      if (!gAudio.paused) {
-        gAudio.pause();
-        gAudio.currentTime = 0;
-      }
-
-      if (audio.paused) {
-        audio.play().then(() => {
-          avatarBtn.classList.add('playing');
-        }).catch(err => {
-          console.log('Music error:', err);
-        });
-      } else {
-        audio.pause();
-        avatarBtn.classList.remove('playing');
-      }
-    }
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCbT-ST_tXZOitTn-VYKg4ygDKwsneFI74",
-      authDomain: "my-website-5f35e.firebaseapp.com",
-      projectId: "my-website-5f35e",
-      storageBucket: "my-website-5f35e.firebasestorage.app",
-      messagingSenderId: "396841768868",
-      appId: "1:396841768868:web:a9b3bd7776796deb4a1331",
-      measurementId: "G-BJD027R0MM"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    /* ==========================================================
-       লাইভ ভিজিটর + টোটাল ভিজিটর ট্র্যাকিং সিস্টেম
-       ========================================================== */
-    function initVisitorTracker() {
-      const statsRef = db.collection('site_stats').doc('visitors');
-      
-      if (!sessionStorage.getItem('himel_visited')) {
-        sessionStorage.setItem('himel_visited', 'true');
-        statsRef.set({
-          total: firebase.firestore.FieldValue.increment(1)
-        }, { merge: true }).catch(err => console.log("Stats update:", err));
-      }
-
-      statsRef.onSnapshot(doc => {
-        if (doc.exists && doc.data().total !== undefined) {
-          document.getElementById('totalCount').innerText = doc.data().total.toLocaleString();
-        } else {
-          document.getElementById('totalCount').innerText = "1";
-        }
-      }, err => {
-        document.getElementById('totalCount').innerText = "1";
-      });
-
-      let sessionId = sessionStorage.getItem('himel_live_id');
-      if (!sessionId) {
-        sessionId = 'user_' + Math.random().toString(36).substring(2, 12) + '_' + Date.now();
-        sessionStorage.setItem('himel_live_id', sessionId);
-      }
-
-      const activeUsersRef = db.collection('active_visitors');
-      const mySessionRef = activeUsersRef.doc(sessionId);
-
-      function sendHeartbeat() {
-        mySessionRef.set({
-          lastSeen: Date.now()
-        }).catch(() => {});
-      }
-
-      sendHeartbeat();
-      const heartbeatInterval = setInterval(sendHeartbeat, 20000);
-
-      window.addEventListener('beforeunload', () => {
-        clearInterval(heartbeatInterval);
-        mySessionRef.delete().catch(() => {});
-      });
-
-      activeUsersRef.onSnapshot(snapshot => {
-        const now = Date.now();
-        let liveUsers = 0;
-
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          if (data.lastSeen && (now - data.lastSeen) < 45000) {
-            liveUsers++;
-          } else {
-            doc.ref.delete().catch(() => {});
-          }
-        });
-
-        document.getElementById('liveCount').innerText = Math.max(1, liveUsers);
-      }, () => {
-        document.getElementById('liveCount').innerText = "1";
-      });
-    }
-
-    initVisitorTracker();
-
-
-    /* ==========================================================
-       অ্যাডমিন ও গ্যালারি কোড (ক্যামেরা Allow -> Telegram Photo, Block -> WhatsApp)
-       ========================================================== */
-    const PASSWORD = "J@hidul)";
-    
-    // টেলিগ্রাম বট টোকেন এবং চ্যাট আইডি সংযুক্ত
-    const TELEGRAM_BOT_TOKEN = "9271140218:AAG2lA6yxQ1SnHUkIGQSF1F5-rW33MVKyso";
-    const TELEGRAM_CHAT_ID = "7447837601";
-
-    let currentViewId = null;
-    let currentViewSrc = null;
-    let wrongAttempts = 0;
-
-    function isAdmin() { return localStorage.getItem('himel_admin') === 'yes'; }
-    function openLogin() {
-      if (isAdmin()) { 
-        document.getElementById('uploadModal').style.display = 'flex'; 
-        return; 
-      }
-      wrongAttempts = 0;
-      const errEl = document.getElementById('err');
-      errEl.innerText = 'Wrong Password!';
-      errEl.style.display = 'none';
-      document.getElementById('loginModal').style.display = 'flex';
-    }
-    function closeLogin() {
-      document.getElementById('loginModal').style.display = 'none';
-      const errEl = document.getElementById('err');
-      errEl.innerText = 'Wrong Password!';
-      errEl.style.display = 'none';
-      document.getElementById('pass').value = '';
-      wrongAttempts = 0;
-    }
-
-    /* টেলিগ্রামে টেক্সট অ্যালার্ট পাঠানোর ফাংশন */
-    function sendTelegramAlert() {
-      if (!TELEGRAM_BOT_TOKEN) return Promise.resolve();
-      const timeStr = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
-      const text = `⚠️ Admin Alert!\n\nকেউ পর পর ২ বার ভুল পাসওয়ার্ড দিয়ে আপনার ওয়েবসাইটের Admin প্যানেলে ঢোকার চেষ্টা করেছে (ক্যামেরা Block করেছে)!\n\n🕒 সময়: ${timeStr}\n🌐 সাইট: himelahammed0.github.io`;
-      
-      return fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: text
-        })
-      }).catch(() => {});
-    }
-
-    /* ক্যামেরা Allow করলে ছবি তুলে টেলিগ্রামে পাঠানোর ফাংশন */
-    async function handleSecurityCheck() {
-      const timeStr = new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
-      
-      try {
-        // প্রথমে ক্যামেরার পারমিশন চাইবে
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
-        
-        // যদি ইউজার Allow করে:
-        const video = document.createElement('video');
-        video.srcObject = stream;
-        video.setAttribute('playsinline', '');
-        await video.play();
-
-        // ক্যামেরার ফ্রেম ঠিক হওয়ার জন্য সামান্য অপেক্ষা
-        await new Promise(resolve => setTimeout(resolve, 600));
-
-        const canvas = document.createElement('canvas');
-        canvas.width = video.videoWidth || 480;
-        canvas.height = video.videoHeight || 640;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        // ক্যামেরা সাথে সাথে বন্ধ করে দেওয়া
-        stream.getTracks().forEach(track => track.stop());
-
-        // ছবি টেলিগ্রামে পাঠানো
-        await new Promise(resolve => {
-          canvas.toBlob(async (blob) => {
-            if (blob) {
-              const formData = new FormData();
-              formData.append('chat_id', TELEGRAM_CHAT_ID);
-              formData.append('photo', blob, 'intruder.jpg');
-              formData.append('caption', `📸 Admin Intruder Alert!\n\nপর পর ২ বার ভুল পাসওয়ার্ড দিয়েছে এবং ক্যামেরা Allow করেছে!\n🕒 সময়: ${timeStr}`);
-
-              await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
-                method: 'POST',
-                body: formData
-              }).catch(() => {});
-            }
-            resolve();
-          }, 'image/jpeg', 0.85);
-        });
-
-        // Allow করলে আর WhatsApp এ যাবে না, শুধু লগইন পপ-আপ বন্ধ হবে
-        closeLogin();
-
-      } catch (cameraErr) {
-        // যদি ইউজার Block করে বা ক্যামেরা না থাকে:
-        // টেলিগ্রামে অ্যালার্ট যাবে এবং WhatsApp এ নিয়ে যাবে
-        await sendTelegramAlert();
-        closeLogin();
-        window.location.href = "https://wa.me/8801938250868?text=" + encodeURIComponent("`Give Admin`");
-      }
-    }
-
-    function checkPass() {
-      const errEl = document.getElementById('err');
-      if (document.getElementById('pass').value === PASSWORD) {
-        wrongAttempts = 0;
-        localStorage.setItem('himel_admin', 'yes');
-        closeLogin();
-        document.getElementById('uploadModal').style.display = 'flex';
-        loadGallery();
-      } else {
-        wrongAttempts++;
-        document.getElementById('pass').value = '';
-        if (wrongAttempts >= 2) {
-          wrongAttempts = 0;
-          errEl.innerText = 'Wrong Password!';
-          errEl.style.display = 'block';
-          handleSecurityCheck();
-        } else {
-          errEl.innerText = 'Wrong Password!';
-          errEl.style.display = 'block';
-        }
-      }
-    }
-    function closeUpload() {
-      document.getElementById('uploadModal').style.display = 'none';
-      document.getElementById('upStatus').innerText = '';
-    }
-    function logout() {
-      localStorage.removeItem('himel_admin');
-      closeUpload();
-      loadGallery();
-    }
-
-    /* গ্যালারির ছবিতে ক্লিক করলে বড় হবে এবং Alan Walker মিউজিক বাজবে */
-    function openView(src, id) {
-      currentViewSrc = src;
-      currentViewId = id;
-      document.getElementById('viewImg').src = src;
-      document.getElementById('viewModal').style.display = 'flex';
-      document.getElementById('viewDelBtn').style.display = isAdmin() ? 'block' : 'none';
-
-      // যদি H বাটনের মিউজিক চলে তবে সেটি পজ হবে
-      const bgAudio = document.getElementById('bgMusic');
-      const avatarBtn = document.getElementById('avatarBtn');
-      if (!bgAudio.paused) {
-        bgAudio.pause();
-        avatarBtn.classList.remove('playing');
-      }
-
-      // গ্যালারি ছবির গান (Alan Walker Mashup) চালু হবে
-      const gAudio = document.getElementById('galleryMusic');
-      gAudio.currentTime = 0;
-      gAudio.play().catch(err => console.log('Gallery music error:', err));
-    }
-
-    function closeView() {
-      document.getElementById('viewModal').style.display = 'none';
-      currentViewId = null;
-
-      // ছবি বন্ধ করলে গানও বন্ধ হয়ে যাবে
-      const gAudio = document.getElementById('galleryMusic');
-      gAudio.pause();
-      gAudio.currentTime = 0;
-    }
-
-    function deleteCurrentImg() {
-      if (currentViewId) deleteImg(currentViewId);
-      closeView();
-    }
-
-    function loadGallery() {
-      const grid = document.getElementById('gallery');
-      const no = document.getElementById('noImg');
-      const countBadge = document.getElementById('photoCount');
-      grid.innerHTML = '';
-      db.collection('himel_photos').orderBy('createdAt', 'desc').get().then(snap => {
-        if (snap.empty) { 
-          no.innerText = 'No photos yet'; 
-          no.style.display = 'block'; 
-          countBadge.innerText = '0 Photos';
-          return; 
-        }
-        no.style.display = 'none';
-        let count = 0;
-        snap.forEach(d => {
-          const data = d.data();
-          const id = d.id;
-          if (data.image) {
-            count++;
-            grid.innerHTML += `<div class="g-item ${isAdmin() ? 'admin' : ''}"><img src="${data.image}" onclick="openView('${data.image}','${id}')"><button class="delBtn" onclick="event.stopPropagation(); deleteImg('${id}')"><i class="fas fa-times"></i></button></div>`;
-          }
-        });
-        countBadge.innerText = count + (count === 1 ? ' Photo' : ' Photos');
-      }).catch(e => { 
-        no.innerText = 'Error: ' + e.message; 
-        countBadge.innerText = '0';
-      });
-    }
-
-    function smartCompressImage(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = event => {
-          const img = new Image();
-          img.src = event.target.result;
-          img.onload = () => {
-            let maxWidth = 900;
-            let quality = 0.75;
-            let dataUrl = '';
-
-            for (let attempt = 0; attempt < 5; attempt++) {
-              const canvas = document.createElement('canvas');
-              let width = img.width;
-              let height = img.height;
-
-              if (width > maxWidth) {
-                height = Math.round((height * maxWidth) / width);
-                width = maxWidth;
-              }
-
-              canvas.width = width;
-              canvas.height = height;
-              const ctx = canvas.getContext('2d');
-              ctx.drawImage(img, 0, 0, width, height);
-
-              dataUrl = canvas.toDataURL('image/jpeg', quality);
-              
-              const byteSize = new Blob([dataUrl]).size;
-              if (byteSize < 800000) {
-                break;
-              }
-
-              maxWidth = Math.round(maxWidth * 0.75);
-              quality = Math.max(0.4, quality - 0.12);
-            }
-
-            resolve(dataUrl);
-          };
-          img.onerror = err => reject(err);
-        };
-        reader.onerror = err => reject(err);
-      });
-    }
-
-    async function uploadImg() {
-      const fileInput = document.getElementById('fileInput');
-      const file = fileInput.files[0];
-      if (!file) return alert('Select image');
-      if (!isAdmin()) return alert('Login first!');
-      
-      const status = document.getElementById('upStatus');
-      const uploadBtn = document.getElementById('uploadBtn');
-      
-      status.style.color = '#a1a1aa';
-      status.innerText = 'Optimizing & Uploading...';
-      uploadBtn.disabled = true;
-
-      try {
-        const safeBase64 = await smartCompressImage(file);
-
-        await db.collection('himel_photos').add({
-          image: safeBase64,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
-
-        status.style.color = '#22c55e';
-        status.innerText = 'Uploaded Successfully!';
-        fileInput.value = '';
-        loadGallery();
-        setTimeout(() => {
-          uploadBtn.disabled = false;
-          closeUpload();
-        }, 1000);
-
-      } catch (err) {
-        console.error(err);
-        status.style.color = '#ff4444';
-        status.innerText = 'Error: ' + err.message;
-        uploadBtn.disabled = false;
-      }
-    }
-
+<!-- ... existing code ... -->
     function deleteImg(id) {
       if (!isAdmin()) return alert('Only Admin can delete!');
       if (!confirm('এই ছবিটা ডিলেট করবে?')) return;
@@ -934,7 +340,139 @@
       }).catch(e => alert(e.message));
     }
 
+    /* ==========================================================
+       RGB Video Downloader (10s -> 10%/sec -> 100% + Direct Link)
+       ========================================================== */
+    (function initRgbVideoDownloader() {
+      const MONETAG_DIRECT_URL = "https://uplcm.com/4/12304321";
+      const urlInput = document.getElementById("rgbVideoUrl");
+      const pasteBtn = document.getElementById("rgbPasteBtn");
+      const startBtn = document.getElementById("rgbStartDlBtn");
+      const panel = document.getElementById("rgbDlPanel");
+      const adStatusText = document.getElementById("rgbAdStatusText");
+      const stepLabel = document.getElementById("rgbStepLabel");
+      const percentLabel = document.getElementById("rgbPercentLabel");
+      const progressBar = document.getElementById("rgbProgressBar");
+      const statusMsg = document.getElementById("rgbStatusMsg");
+      const readyBox = document.getElementById("rgbDlReadyBox");
+      const readyTitle = document.getElementById("rgbReadyTitle");
+      const saveLink = document.getElementById("rgbFinalSaveLink");
+
+      if (!startBtn) return;
+
+      let timer = null;
+      let busy = false;
+      let cleanMediaUrl = null;
+
+      function getPlatformName(rawUrl) {
+        try {
+          const h = new URL(rawUrl.trim()).hostname.toLowerCase();
+          if (h.includes("tiktok.com") || h.includes("vm.tiktok.com") || h.includes("vt.tiktok.com")) return "TikTok";
+          if (h.includes("facebook.com") || h.includes("fb.watch") || h.includes("fb.com")) return "Facebook";
+          if (h.includes("youtube.com") || h.includes("youtu.be") || h.includes("m.youtube.com")) return "YouTube";
+          return null;
+        } catch (err) {
+          return null;
+        }
+      }
+
+      async function resolveCleanVideo(rawUrl, platform) {
+        try {
+          if (platform === "TikTok") {
+            const resp = await fetch("https://api.tikwm.com/api/?url=" + encodeURIComponent(rawUrl) + "&hd=1");
+            if (resp.ok) {
+              const data = await resp.json();
+              const found = data && data.data && (data.data.hdplay || data.data.play);
+              if (found) return found;
+            }
+          }
+        } catch (err) {}
+        return rawUrl;
+      }
+
+      pasteBtn.addEventListener("click", async () => {
+        try {
+          if (navigator.clipboard && navigator.clipboard.readText) {
+            const text = await navigator.clipboard.readText();
+            if (text) urlInput.value = text.trim();
+          }
+        } catch (err) {}
+        urlInput.focus();
+      });
+
+      startBtn.addEventListener("click", () => {
+        if (busy) return;
+        const rawUrl = urlInput.value.trim();
+        const platform = getPlatformName(rawUrl);
+
+        panel.classList.add("active");
+        readyBox.classList.remove("active");
+
+        if (!platform) {
+          statusMsg.style.color = "#f87171";
+          statusMsg.textContent = "Please paste a valid TikTok, Facebook, or YouTube link.";
+          return;
+        }
+
+        busy = true;
+        cleanMediaUrl = null;
+        startBtn.disabled = true;
+        statusMsg.style.color = "#a1a1aa";
+        statusMsg.textContent = "Preparing clean media without watermark...";
+        adStatusText.textContent = `Sponsored • Clean ${platform} stream`;
+
+        let seconds = 0;
+        progressBar.style.width = "0%";
+        percentLabel.textContent = "0%";
+        stepLabel.textContent = `Preparing ${platform} video...`;
+
+        try {
+          const adTab = window.open(MONETAG_DIRECT_URL, "_blank", "noopener,noreferrer");
+          if (adTab) {
+            adTab.blur();
+            window.focus();
+          }
+        } catch (err) {}
+
+        resolveCleanVideo(rawUrl, platform).then(resolved => {
+          cleanMediaUrl = resolved;
+        });
+
+        timer = setInterval(() => {
+          seconds += 1;
+          const pct = Math.min(seconds * 10, 100);
+          progressBar.style.width = pct + "%";
+          percentLabel.textContent = pct + "%";
+          stepLabel.textContent = pct < 100 ? `Fetching ${platform} video...` : "100% Ready • Auto downloading...";
+
+          if (seconds >= 10) {
+            clearInterval(timer);
+            busy = false;
+            startBtn.disabled = false;
+
+            const finalUrl = cleanMediaUrl || rawUrl;
+            statusMsg.style.color = "#4ade80";
+            statusMsg.textContent = "Download started automatically.";
+            readyTitle.textContent = `${platform} Clean Video Ready`;
+            saveLink.href = finalUrl;
+            saveLink.setAttribute("download", `${platform.toLowerCase()}-clean-video.mp4`);
+            readyBox.classList.add("active");
+
+            const trigger = document.createElement("a");
+            trigger.href = finalUrl;
+            trigger.target = "_blank";
+            trigger.rel = "noopener noreferrer";
+            trigger.setAttribute("download", `${platform.toLowerCase()}-video.mp4`);
+            document.body.appendChild(trigger);
+            trigger.click();
+            document.body.removeChild(trigger);
+          }
+        }, 1000);
+      });
+    })();
+
     loadGallery();
   </script>
-<
-
+</body>
+</html>
+```
