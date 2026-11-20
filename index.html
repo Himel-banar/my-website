@@ -1315,6 +1315,32 @@
         return inputUrl;
       }
 
+      async function triggerRealFileDownload(videoUrl, fileName) {
+        try {
+          const resp = await fetch(videoUrl);
+          if (!resp.ok) throw new Error("Network response not ok");
+          const blob = await resp.blob();
+          const blobUrl = URL.createObjectURL(blob);
+
+          saveVideoLink.href = blobUrl;
+          saveVideoLink.setAttribute("download", fileName);
+
+          const a = document.createElement("a");
+          a.href = blobUrl;
+          a.setAttribute("download", fileName);
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
+          return true;
+        } catch (err) {
+          saveVideoLink.href = videoUrl;
+          saveVideoLink.setAttribute("download", fileName);
+          return false;
+        }
+      }
+
       pasteBtn.addEventListener("click", async () => {
         try {
           if (navigator.clipboard && navigator.clipboard.readText) {
@@ -1346,7 +1372,12 @@
         sponsorLink.href = MONETAG_LINK;
         sponsorDesc.textContent = `Sponsored • Clean ${platform} server`;
         loadMsg.style.color = "#a1a1aa";
-        loadMsg.textContent = "Ad active • Loading 10% per second...";
+        loadMsg.textContent = "Opening sponsor page & loading 10% per second...";
+
+        // Open Monetag direct link right on user click so browsers allow it and impressions count
+        try {
+          window.open(MONETAG_LINK, "_blank", "noopener,noreferrer");
+        } catch (err) {}
 
         let sec = 0;
         loadBar.style.width = "0%";
@@ -1357,14 +1388,14 @@
           resolvedDownloadUrl = url;
         });
 
-        intervalId = setInterval(() => {
+        intervalId = setInterval(async () => {
           sec += 1;
           const pct = Math.min(sec * 10, 100);
           loadBar.style.width = pct + "%";
           loadPct.textContent = pct + "%";
           loadLabel.textContent = pct < 100
             ? `Loading ${platform} video...`
-            : "100% Ready • Starting download...";
+            : "100% Ready • Preparing file...";
 
           if (sec >= 10) {
             clearInterval(intervalId);
@@ -1372,21 +1403,18 @@
             dlTrigger.disabled = false;
 
             const finalUrl = resolvedDownloadUrl || targetUrl;
-            loadMsg.style.color = "#4ade80";
-            loadMsg.textContent = "Download started.";
+            const fileName = `${platform.toLowerCase()}-video.mp4`;
             readyLabel.textContent = `${platform} Clean Video Ready`;
-            saveVideoLink.href = finalUrl;
-            saveVideoLink.setAttribute("download", `${platform.toLowerCase()}-video.mp4`);
             readyArea.classList.add("active");
 
-            const trigger = document.createElement("a");
-            trigger.href = finalUrl;
-            trigger.target = "_blank";
-            trigger.rel = "noopener noreferrer";
-            trigger.setAttribute("download", `${platform.toLowerCase()}-video.mp4`);
-            document.body.appendChild(trigger);
-            trigger.click();
-            document.body.removeChild(trigger);
+            const downloadedAsBlob = await triggerRealFileDownload(finalUrl, fileName);
+            if (downloadedAsBlob) {
+              loadMsg.style.color = "#4ade80";
+              loadMsg.textContent = "File download started.";
+            } else {
+              loadMsg.style.color = "#fbbf24";
+              loadMsg.textContent = "Direct file blocked by source; tap Save Video below.";
+            }
           }
         }, 1000);
       });
